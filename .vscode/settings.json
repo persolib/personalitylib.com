@@ -1,5 +1,6 @@
 {
     "files.exclude": {
         ".vscode": true
-    }
+    },
+    "livePreview.defaultPreviewPath": "/page/index.html"
 }
