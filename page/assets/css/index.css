@@ -59,6 +59,9 @@
   }
 
   footer span {
+    padding-right: 12px;
+    padding-left: 12px;
+    font-family: "Share Tech", sans-serif;
     align-items: center;
     text-align: center;
   }
@@ -69,11 +72,8 @@
   }
 
   footer h1 {
+    font-family: "Share Tech", sans-serif;
     color: var(--text);
-  }
-
-  hr {
-    background-color: white;
   }
   
   .input-div {
@@ -118,9 +118,9 @@
   }
   
   .titel {
+    padding-left: 12px;
     color: var(--text);
     font-family: "Share Tech", sans-serif;
-    padding-left: 12px;
   }
   
   .input-titel {
