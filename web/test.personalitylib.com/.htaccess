@@ -1,0 +1,6 @@
+ErrorDocument 404 https://error.personalitylib.com/404/
+
+AuthName "root"
+AuthType Basic
+AuthUserFile /web/test.personalitylib.com/.htpasswd
+require valid-user
