@@ -103,10 +103,9 @@
     width: 100px;
     height: 35px;
     background-color: var(--main);
-    border-radius: 3px;
-    border: 2px solid var(--border);
+    outline: 2px solid var(--border);
     color: var(--text);
-    transition: width 0.4s ease-in-out;
+    transition: width 0,4s ease-in-out;
   }
 
   .button-submit-div button:hover {
@@ -165,7 +164,6 @@
     padding-left: 10px;
     padding-right: 10px;
     text-decoration: none;
-    border-radius: 2px;
     font-size: 13pt;
     width: 50px;
     transition: width 0.4s ease-in-out;
@@ -173,7 +171,7 @@
   
   .link-tree a:hover {
     background-color: var(--background);
-    color: var(--text-background);
+    color: var(--text-bac kground);
     outline: 2px solid var(--outline);
     outline-style: dashed;
     width: 80px;
