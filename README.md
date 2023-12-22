@@ -12,4 +12,4 @@ Here are some of the benefits of using PersoLib:
 * **Increased productivity:** PersoLib can help us to identify our strengths and weaknesses, which can improve our productivity.
 * **Personalized recommendations:** PersoLib can provide us with personalized recommendations for products, services, and activities.
 
-If you are interested in learning more about PersoLib, please visit the project's website at [https://persolib.github.io](https://persolib.github.io). You can also download the PersoLib app for iOS and Android.
+If you are interested in learning more about PersoLib, please visit the project's website at [https://persolib.github.io](https:/personalitylib.io). You can also download the PersoLib app for iOS and Android.
