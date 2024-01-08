@@ -13,4 +13,4 @@ jobs:
       with:
         server: ngcobalt116.manitu.net
         username: ftp200027816
-        password: ${{ secrets.pswd }}
+        password: ${{ secrets.PASW }}
