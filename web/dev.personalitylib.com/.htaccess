@@ -1,6 +1,6 @@
 Authtype Basic
 AuthName "test"
-AuthUserFile /home/sites/site100035052/web/test.personalitylib.com/.htpasswd
+AuthUserFile /home/sites/site100035052/web/dev.personalitylib.com/.htpasswd
 Require valid-user
 
 ErrorDocument 404 https://error.personalitylib.com/404/
