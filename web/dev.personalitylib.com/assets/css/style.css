@@ -1,1 +1,197 @@
-/*# sourceMappingURL=style.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+:root {
+  --main: black;
+  --outline: #9e363a;
+  --shadow: #091f36;
+  --details: #4f5f76;
+  --border: whitesmoke;
+  --text: white;
+  --background: whitesmoke;
+  --text-background: black;
+}
+
+html {
+  height: 99%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  background-color: var(--main);
+  overflow: hidden;
+}
+
+main,
+header,
+footer {
+  position: absolute;
+}
+
+main {
+  align-items: center;
+  width: 100%;
+  background-color: var(--main);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 10%;
+  background-color: var(--main);
+  top: 0;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+  background-color: var(--main);
+  bottom: 0;
+}
+
+footer span {
+  padding-right: 12px;
+  padding-left: 12px;
+  font-family: "Share Tech", sans-serif;
+  align-items: center;
+  text-align: center;
+}
+
+footer span p {
+  color: var(--text);
+  margin: 0;
+}
+
+footer h1 {
+  font-family: "Share Tech", sans-serif;
+  color: var(--text);
+}
+
+.input-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-submit-div {
+  width: 50%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.button-submit-div button {
+  font-size: 13pt;
+  font-family: "Chakra Petch", sans-serif;
+  width: 100px;
+  height: 35px;
+  background-color: var(--main);
+  outline: 2px solid var(--border);
+  color: var(--text);
+  transition: width 0, 4s ease-in-out;
+}
+
+.button-submit-div button:hover {
+  width: 120px;
+  outline: 2px solid var(--outline);
+  outline-style: dashed;
+  color: var(--text-background);
+  background-color: var(--background);
+}
+
+.titel {
+  padding-left: 12px;
+  color: var(--text);
+  font-family: "Share Tech", sans-serif;
+}
+
+.input-titel {
+  color: var(--text);
+  height: 50px;
+  font-size: 30pt;
+  font-family: "Share Tech", sans-serif;
+  padding-right: 20px;
+}
+
+.input {
+  font-family: "Share Tech", sans-serif;
+  border-radius: 6px;
+  border: 3px solid var(--border);
+  background-color: var(--main);
+  width: 60%;
+  height: 60px;
+  transition: width 0.4s ease-in-out;
+  color: var(--text);
+  font-size: 30pt;
+}
+
+.input:focus {
+  width: 70%;
+  outline: 3px dotted var(--border);
+  border: none;
+  margin-right: 25px;
+}
+
+.link-tree {
+  font-family: "Chakra Petch", sans-serif;
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 15%;
+}
+
+.link-tree a {
+  text-align: center;
+  color: var(--text);
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+  font-size: 13pt;
+  width: 50px;
+  transition: width 0.4s ease-in-out;
+}
+
+.link-tree a:hover {
+  background-color: var(--background);
+  color: var(--text-bac kground);
+  outline: 2px solid var(--outline);
+  outline-style: dashed;
+  width: 80px;
+  cursor: pointer;
+}
+
+.submit {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+@media screen and (max-width: 1200px) {
+  footer {
+    display: none;
+  }
+  .link-tree {
+    display: none;
+  }
+}
+@media screen and (max-width: 700px) {
+  .titel-alt {
+    display: none;
+  }
+}/*# sourceMappingURL=style.css.map */
