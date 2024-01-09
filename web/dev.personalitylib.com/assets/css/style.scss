@@ -102,7 +102,7 @@ footer {
 .button-submit-div {
   width: 50%;
   @include displayflex($a: left);
-
+ 
   button {
     margin-top: 4px;
     font-size: $normal;
