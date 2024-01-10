@@ -23,5 +23,4 @@ jobs:
             ../../web/dev.personalitylib.com/assets/css/style.css.map
             LICENSE
             README.txt
-          delete: 'true'
 
