@@ -14,5 +14,15 @@ jobs:
           password: ${{ secrets.PASW }}
           port: 23
           uploads: |
-          ./web => ./web/
+            ./web => ./web/
+          ignore: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            ../../web/dev.personalitylib.com/assets/css/scss
+            ../../web/dev.personalitylib.com/assets/css/style.scss 
+            ../../web/dev.personalitylib.com/assets/css/style.css.map
+            LICENSE
+            README.txt
+          delete: 'true'
 
