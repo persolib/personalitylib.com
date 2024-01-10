@@ -18,7 +18,8 @@ jobs:
           **/.git*
           **/.git*/**
           **/node_modules/**
-          ../../web/dev.personalitylib.com/assets/css/scss/**
-          ../../web/dev.personalitylib.com/assets/css/style.scss
+          ../../web/dev.personalitylib.com/assets/css/scss
+          ../../web/dev.personalitylib.com/assets/css/style.scss 
+          ../../web/dev.personalitylib.com/assets/css/style.css.map
           LICENSE
           README.txt
