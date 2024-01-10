@@ -15,7 +15,7 @@
     }
   }
 }
-
+ 
 // RFS rescaling
 @media (min-width: $rfs-mq-value) {
   @each $breakpoint in map-keys($grid-breakpoints) {
