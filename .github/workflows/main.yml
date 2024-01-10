@@ -13,7 +13,7 @@ jobs:
           password: ${{ secrets.PASW }}
           port: 23
           uploads: |
-            ./web => ./web/
+            . => .
           ignore: |
             **/.git*
             **/.git*/**
