@@ -1,8 +1,8 @@
 {
     "files.exclude": {
-        ".github": false,
-        ".vscode": false,
-        "LICENSE": false,
-        "README.md": false
+        ".github": true,
+        ".vscode": true,
+        "LICENSE": true,
+        "README.md": true
     }
 }

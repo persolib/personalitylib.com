@@ -2,22 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 // Variable overrides first
-//colors
-$main: black;
-$outline: #9e363a;
-$shadow: #091f36;
-$details: #4f5f76;
-$border: whitesmoke;
-$text: white;
-$background: whitesmoke;
-$text-background: black;
- 
-//font sizes
-$input: 30pt;
-$normal: 13pt;
+@import "./var";
 
 // Then import Bootstrap
-@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "./scss/bootstrap.scss";
 
 @mixin displayflex($a: center, $b: center) {
   display: flex;
@@ -29,7 +17,7 @@ $normal: 13pt;
   padding-right: $a;
   padding-left: $b;
 }
- 
+  
 
 html {
   height: 99%;
