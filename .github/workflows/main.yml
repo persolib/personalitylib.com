@@ -14,3 +14,9 @@ jobs:
         server: ngcobalt116.manitu.net
         username: ftp200027816
         password: ${{ secrets.PASW }}
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          LICENSE
+          README.txt
