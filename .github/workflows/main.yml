@@ -6,7 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📂 Sync files
-        uses: actions/checkout@v3
         uses: Dylan700/sftp-upload-action@latest
         with:
           server: ngcobalt116.manitu.net
