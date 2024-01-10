@@ -14,7 +14,7 @@ jobs:
         server: ngcobalt116.manitu.net
         username: ftp200027816
         password: ${{ secrets.PASW }}
-        port: 23
+        port: 21
         exclude: |
           **/.git*
           **/.git*/**
