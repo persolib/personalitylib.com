@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <title>PersonalityLib</title>
   <meta name="title" content="PersonalityLib" />
   <meta name="description"
     content="PersoLib is an open-source project that allows individuals to share their personality data with others." />
@@ -19,21 +20,23 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
+#TODO: linktree für kleinere media verfügbar machen
+#TODO: html/scss vorlage für pages machen
+
 <body>
-  <header>
-    <h1 class="titel">
-      PersoLib TESTING
-      <span class="titel-alt">- Why would we talk to each other?</span>
+  <header class="hstack gap-2">
+    <h1 class="titel p-2">
+      PersonalityLib
     </h1>
-    <div class="link-tree">
+    <div class="link-tree p-2 ms-auto">
       <div class="btn-group" role="group" aria-label="Basic outlined example">
-        <button type="button" class="btn btn-outline-primary" <!--onclick="window.location.href='https://example.com'"-->
+        <button type="button" class="btn btn-outline-primary" onclick="window.location.href='./pages/account/'">
           Account
         </button>
-        <button type="button" class="btn btn-outline-primary" <!--onclick="window.location.href='https://example.com'"-->
+        <button type="button" class="btn btn-outline-primary" onclick="window.location.href='./pages/login/'"> 
           Create
         </button>
-        <button type="button" class="btn btn-outline-primary" <!--onclick="window.location.href='https://example.com'"-->
+        <button type="button" class="btn btn-outline-primary" onclick="window.location.href='./pages/about/'">
           About
         </button>
       </div>

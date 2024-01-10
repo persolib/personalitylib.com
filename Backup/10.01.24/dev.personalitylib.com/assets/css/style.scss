@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+// Variable overrides first
+@import "./var";
+
+// Then import Bootstrap
+@import "./scss/bootstrap.scss";
+
+@mixin displayflex($a: center, $b: center) {
+  display: flex;
+  justify-content: $a;
+  align-items: $b;
+}
+
+@mixin padding-both($a, $b) {
+  padding-right: $a;
+  padding-left: $b;
+}
+
+@mixin margin-both($a, $b) {
+  margin-right: $a;
+  margin-left: $b;
+}
+
+@mixin button-groupe {
+    background-color: none;
+    border-color: $border;
+    color: $text;
+    width: 90px;
+    transition: 0.4s;
+
+    &:hover {
+      width: 110px;
+      border-color: $black;
+      color: $text-background;
+      background-color: white;
+      border-style: dashed;
+    }
+}
+
+
+html {
+  height: 99%;
+}
+
+body {
+  @include displayflex();
+  height: 100%;
+  position: relative;
+  background-color: $main;
+  overflow: hidden;
+}
+
+main,
+header,
+footer {
+  position: absolute;
+}
+
+main {
+  align-items: center;
+  width: 100%;
+  background-color: $main;
+}
+
+header {
+  @include displayflex($a: space-between);
+  width: 100%;
+  height: 10%;
+  background-color: $main;
+  top: 0;
+}
+
+footer {
+  @include padding-both(22px, 22px);
+  @include displayflex($a: space-between);
+  width: 100%;
+  height: 10%;
+  background-color: $main;
+  bottom: 0;
+
+  span {
+    font-family: "Share Tech", sans-serif;
+    align-items: center;
+    text-align: center;
+  }
+
+  span p {
+    color: $text;
+    margin: 0;
+  }
+
+  h1 {
+    font-family: "Share Tech", sans-serif;
+    color: $text;
+  }
+
+}
+
+.input-div {
+  width: 100%;
+  @include displayflex();
+
+  nav {
+    font-family: "Share Tech", sans-serif;
+    border-radius: 6px;
+    width: 60%;
+    height: 60px;
+    color: $text;
+    font-size: $input;
+
+    input {
+
+      &:focus {
+        width: 70%;
+        border: 3px dotted $border;
+        margin-right: 25px;
+      }
+    }
+  }
+}
+
+.submit-div {
+  width: 100%;
+  @include displayflex();
+
+  .button-submit-div {
+    padding-top: 10px;
+    width: 50%;
+    @include displayflex($a: left);
+    button {@include button-groupe();}
+  }
+}
+
+.titel {
+  padding-left: 12px;
+  color: $text;
+  font-family: "Share Tech", sans-serif;
+}
+
+.link-tree {
+  font-family: "Chakra Petch", sans-serif;
+  padding-right: 20px;
+  @include displayflex($a: space-between);
+  button {@include button-groupe();}
+  width: 15%;
+}
+
+.submit {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+@media screen and (max-width: 1200px) {
+  footer {
+    display: none;
+  }
+
+  .link-tree { 
+    display: none;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .titel-alt {
+    display: none;
+  }
+}

@@ -1,11 +1,11 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Share+Tech&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 /*!
  * Bootstrap  v5.3.2 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 :root,
 [data-bs-theme=light] {
   --bs-blue: #0d6efd;
@@ -12005,13 +12005,37 @@ main {
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
   height: 10%;
   background-color: black;
   top: 0;
+}
+header .link-tree {
+  font-family: "Chakra Petch", sans-serif;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 15%;
+}
+header .link-tree button {
+  background-color: none;
+  border-color: whitesmoke;
+  color: white;
+  width: 90px;
+  transition: 0.4s;
+}
+header .link-tree button:hover {
+  width: 110px;
+  border-color: #000;
+  color: black;
+  background-color: white;
+  border-style: dashed;
+}
+header .titel {
+  padding-left: 12px;
+  color: white;
+  font-family: "Share Tech", sans-serif;
 }
 
 footer {
@@ -12039,6 +12063,14 @@ footer h1, footer .h1 {
   color: white;
 }
 
+@media screen and (max-width: 1200px) {
+  footer {
+    display: none;
+  }
+  header .link-tree {
+    margin-left: 90%;
+  }
+}
 .input-div {
   width: 100%;
   display: flex;
@@ -12087,50 +12119,7 @@ footer h1, footer .h1 {
   border-style: dashed;
 }
 
-.titel {
-  padding-left: 12px;
-  color: white;
-  font-family: "Share Tech", sans-serif;
-}
-
-.link-tree {
-  font-family: "Chakra Petch", sans-serif;
-  padding-right: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 15%;
-}
-.link-tree button {
-  background-color: none;
-  border-color: whitesmoke;
-  color: white;
-  width: 90px;
-  transition: 0.4s;
-}
-.link-tree button:hover {
-  width: 110px;
-  border-color: #000;
-  color: black;
-  background-color: white;
-  border-style: dashed;
-}
-
 .submit {
   margin-left: 25px;
   margin-right: 25px;
-}
-
-@media screen and (max-width: 1200px) {
-  footer {
-    display: none;
-  }
-  .link-tree {
-    display: none;
-  }
-}
-@media screen and (max-width: 700px) {
-  .titel-alt {
-    display: none;
-  }
 }/*# sourceMappingURL=style.css.map */

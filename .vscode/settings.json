@@ -3,6 +3,9 @@
         ".github": false,
         ".vscode": false,
         "LICENSE": false,
-        "README.md": false
+        "README.md": false,
+        "web\\error.personalitylib.com": false,
+        "web\\personalitylib.com": false,
+        "web\\soon.personalitylib.com": false
     }
 }
