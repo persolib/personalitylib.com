@@ -12015,6 +12015,8 @@ header {
 }
 
 footer {
+  padding-right: 22px;
+  padding-left: 22px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12024,8 +12026,6 @@ footer {
   bottom: 0;
 }
 footer span {
-  padding-right: 12;
-  padding-left: 12;
   font-family: "Share Tech", sans-serif;
   align-items: center;
   text-align: center;
@@ -12045,6 +12045,19 @@ footer h1, footer .h1 {
   justify-content: center;
   align-items: center;
 }
+.input-div nav {
+  font-family: "Share Tech", sans-serif;
+  border-radius: 6px;
+  width: 60%;
+  height: 60px;
+  color: white;
+  font-size: 30pt;
+}
+.input-div nav input:focus {
+  width: 70%;
+  border: 3px dotted whitesmoke;
+  margin-right: 25px;
+}
 
 .submit-div {
   width: 100%;
@@ -12052,65 +12065,32 @@ footer h1, footer .h1 {
   justify-content: center;
   align-items: center;
 }
-
-.button-submit-div {
+.submit-div .button-submit-div {
+  padding-top: 10px;
   width: 50%;
   display: flex;
   justify-content: left;
   align-items: center;
 }
-.button-submit-div button {
-  margin-top: 4px;
-  font-size: 13pt;
-  font-family: "Chakra Petch", sans-serif;
-  width: 100px;
-  height: 35px;
-  background-color: black;
-  outline: 2px solid whitesmoke;
+.submit-div .button-submit-div button {
+  background-color: none;
+  border-color: whitesmoke;
   color: white;
-  border: none;
-  border-radius: 1px;
-  transition: 0.4s ease-in-out;
+  width: 90px;
+  transition: 0.4s;
 }
-.button-submit-div button:hover {
-  border-radius: 6px;
-  width: 120px;
-  outline: 2pt solid #9e363a;
-  outline-style: dashed;
+.submit-div .button-submit-div button:hover {
+  width: 110px;
+  border-color: #000;
   color: black;
-  background-color: whitesmoke;
+  background-color: white;
+  border-style: dashed;
 }
 
 .titel {
   padding-left: 12px;
   color: white;
   font-family: "Share Tech", sans-serif;
-}
-
-.input-titel {
-  color: white;
-  height: 50px;
-  font-size: 30pt;
-  font-family: "Share Tech", sans-serif;
-  padding-right: 20px;
-}
-
-.input {
-  font-family: "Share Tech", sans-serif;
-  border-radius: 6px;
-  border: 3px solid whitesmoke;
-  background-color: black;
-  width: 60%;
-  height: 60px;
-  transition: width 0.4s ease-in-out;
-  color: white;
-  font-size: 30pt;
-}
-.input:focus {
-  width: 70%;
-  outline: 3px dotted whitesmoke;
-  border: none;
-  margin-right: 25px;
 }
 
 .link-tree {
@@ -12121,23 +12101,19 @@ footer h1, footer .h1 {
   align-items: center;
   width: 15%;
 }
-.link-tree a {
-  text-align: center;
+.link-tree button {
+  background-color: none;
+  border-color: whitesmoke;
   color: white;
-  padding-right: 10;
-  padding-left: 10;
-  text-decoration: none;
-  font-size: 13pt;
-  width: 50px;
-  transition: width 0.4s ease-in-out;
+  width: 90px;
+  transition: 0.4s;
 }
-.link-tree a:hover {
-  background-color: whitesmoke;
+.link-tree button:hover {
+  width: 110px;
+  border-color: #000;
   color: black;
-  outline: 2px solid #9e363a;
-  outline-style: dashed;
-  width: 80px;
-  cursor: pointer;
+  background-color: white;
+  border-style: dashed;
 }
 
 .submit {

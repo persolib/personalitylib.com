@@ -1,47 +1,84 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 
 <head>
-  <meta name="title" content="PersonalityLib">
+  <meta name="title" content="PersonalityLib" />
   <meta name="description"
-    content="PersoLib is an open-source project that allows individuals to share their personality data with others.">
+    content="PersoLib is an open-source project that allows individuals to share their personality data with others." />
   <meta name="keywords"
-    content="personality, libary, exchange, explore, perso, dating, friends, personalitylib, personalitylib.com, justwait">
-  <meta name="robots" content="index, follow">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="language" content="English">
-  <meta name="revisit-after" content="2 days">
-  <meta name="author" content="JustWait">
+    content="personality, libary, exchange, explore, perso, dating, friends, personalitylib, personalitylib.com, justwait" />
+  <meta name="robots" content="index, follow" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="language" content="English" />
+  <meta name="revisit-after" content="2 days" />
+  <meta name="author" content="JustWait" />
   <!-- BOOTTSTRAP -->
   <script src="./assets/js/bootstrap/bootstrap.bundle.min.js"></script>
   <!-- FAVICON -->
-  <link rel="shortcut icon" href="assets/img/favicon.ico">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
   <header>
-    <h1 class="titel">PersoLib <span class="titel-alt">- Why would we talk to each other?</span></h1>
+    <h1 class="titel">
+      PersoLib
+      <span class="titel-alt">- Why would we talk to each other?</span>
+    </h1>
     <div class="link-tree">
-      <a href="#">Acount</a>
-      <a href="#">Create</a>
-      <a href="#">About</a>
+      <div class="btn-group" role="group" aria-label="Basic outlined example">
+        <button type="button" class="btn btn-outline-primary" <!--onclick="window.location.href='https://example.com'"-->
+          Account
+        </button>
+        <button type="button" class="btn btn-outline-primary" <!--onclick="window.location.href='https://example.com'"-->
+          Create
+        </button>
+        <button type="button" class="btn btn-outline-primary" <!--onclick="window.location.href='https://example.com'"-->
+          About
+        </button>
+      </div>
     </div>
   </header>
   <main>
     <div class="input-div">
-      <p class="input-titel">#PersoTag:</p>
-      <input class="input" type="number" name="" id="" maxlength="6" minlength="6" required
-        title="Enter the custom Perso Tag of the Person you would like to look up"/>
+      <nav class="navbar bg-body-tertiary">
+        <form class="container-fluid">
+          <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">#</span>
+            <input type="text" class="form-control" placeholder="PersoTag" aria-label="PeroTag"
+              aria-describedby="basic-addon1">
+          </div>
+        </form>
+      </nav>
     </div>
     <div class="submit-div">
       <div class="button-submit-div">
-        <button type="button" data-bs-placement="bottom" data-bs-toggle="popover" data-bs-title="Lorem..."
-          data-bs-content="Lorem...">Search</button>
-        <script>
-          const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-          const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
-        </script>
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <button type="button" class="btn btn-outline-primary">
+            Search
+          </button>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Help
+          </button>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>

@@ -17,7 +17,28 @@
   padding-right: $a;
   padding-left: $b;
 }
-  
+
+@mixin margin-both($a, $b) {
+  margin-right: $a;
+  margin-left: $b;
+}
+
+@mixin button-groupe {
+    background-color: none;
+    border-color: $border;
+    color: $text;
+    width: 90px;
+    transition: 0.4s;
+
+    &:hover {
+      width: 110px;
+      border-color: $black;
+      color: $text-background;
+      background-color: white;
+      border-style: dashed;
+    }
+}
+
 
 html {
   height: 99%;
@@ -52,6 +73,7 @@ header {
 }
 
 footer {
+  @include padding-both(22px, 22px);
   @include displayflex($a: space-between);
   width: 100%;
   height: 10%;
@@ -59,7 +81,6 @@ footer {
   bottom: 0;
 
   span {
-    @include padding-both(12, 12);
     font-family: "Share Tech", sans-serif;
     align-items: center;
     text-align: center;
@@ -80,38 +101,35 @@ footer {
 .input-div {
   width: 100%;
   @include displayflex();
+
+  nav {
+    font-family: "Share Tech", sans-serif;
+    border-radius: 6px;
+    width: 60%;
+    height: 60px;
+    color: $text;
+    font-size: $input;
+
+    input {
+
+      &:focus {
+        width: 70%;
+        border: 3px dotted $border;
+        margin-right: 25px;
+      }
+    }
+  }
 }
 
 .submit-div {
   width: 100%;
   @include displayflex();
-}
 
-.button-submit-div {
-  width: 50%;
-  @include displayflex($a: left);
- 
-  button {
-    margin-top: 4px;
-    font-size: $normal;
-    font-family: "Chakra Petch", sans-serif;
-    width: 100px;
-    height: 35px;
-    background-color: $main;
-    outline: 2px solid $border;
-    color: $text;
-    border: none;
-    border-radius: 1px;
-    transition: 0.4s ease-in-out;
-
-    &:hover {
-      border-radius: 6px;
-      width: 120px;
-      outline: 2pt solid $outline;
-      outline-style: dashed;
-      color: $text-background;
-      background-color: $background;
-    }
+  .button-submit-div {
+    padding-top: 10px;
+    width: 50%;
+    @include displayflex($a: left);
+    button {@include button-groupe();}
   }
 }
 
@@ -121,57 +139,12 @@ footer {
   font-family: "Share Tech", sans-serif;
 }
 
-.input-titel {
-  color: $text;
-  height: 50px;
-  font-size: $input;
-  font-family: "Share Tech", sans-serif;
-  padding-right: 20px;
-}
-
-.input {
-  font-family: "Share Tech", sans-serif;
-  border-radius: 6px;
-  border: 3px solid $border;
-  background-color: $main;
-  width: 60%;
-  height: 60px;
-  transition: width 0.4s ease-in-out;
-  color: $text;
-  font-size: $input;
-
-  &:focus {
-    width: 70%;
-    outline: 3px dotted $border;
-    border: none;
-    margin-right: 25px;
-  }
-}
-
 .link-tree {
   font-family: "Chakra Petch", sans-serif;
   padding-right: 20px;
   @include displayflex($a: space-between);
+  button {@include button-groupe();}
   width: 15%;
-
-  a {
-    text-align: center;
-    color: $text;
-    @include padding-both(10, 10);
-    text-decoration: none;
-    font-size: $normal;
-    width: 50px;
-    transition: width 0.4s ease-in-out;
-
-    &:hover {
-      background-color: $background;
-      color: $text-background;
-      outline: 2px solid $outline;
-      outline-style: dashed;
-      width: 80px;
-      cursor: pointer;
-    }
-  }
 }
 
 .submit {
@@ -184,7 +157,7 @@ footer {
     display: none;
   }
 
-  .link-tree {
+  .link-tree { 
     display: none;
   }
 }
