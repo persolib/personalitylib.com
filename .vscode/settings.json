@@ -1,14 +1,14 @@
 {
     "files.exclude": {
-        ".github": true,
-        ".vscode": true,
-        "LICENSE": true,
-        "README.md": true,
-        "web\\error.personalitylib.com": true,
-        "web\\personalitylib.com": true,
-        "web\\soon.personalitylib.com": true,
-        "Backup/10.01.24": true,
-        "Backup": true
+        ".github": false,
+        ".vscode": false,
+        "LICENSE": false,
+        "README.md": false,
+        "web\\error.personalitylib.com": false,
+        "web\\personalitylib.com": false,
+        "web\\soon.personalitylib.com": false,
+        "Backup/10.01.24": false,
+        "Backup": false
     },
     "liveServer.settings.port": 5501
 }

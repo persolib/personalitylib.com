@@ -12083,4 +12083,13 @@ footer h1, footer .h1 {
   .licence-card .card {
     width: 90%;
   }
-}/*# sourceMappingURL=login.css.map */
+}
+.licence-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.licence-card .card {
+  width: 80%;
+}/*# sourceMappingURL=licence.css.map */

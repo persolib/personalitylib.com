@@ -41,6 +41,9 @@
         position: relative;
         background-color: $main;
         overflow: hidden;
+        a {
+          text-decoration: none;
+        }
       }
       
       main,
@@ -72,6 +75,11 @@
             color: $text;
             font-family: "Share Tech", sans-serif;
           }
+        
+        .breadcrumb {
+          font-family: "Share Tech", sans-serif;
+          
+        }
       }
       
       footer {
@@ -86,6 +94,10 @@
           font-family: "Share Tech", sans-serif;
           align-items: center;
           text-align: center;
+        }
+
+        .media-vis {
+          display: none;
         }
       
         span p {

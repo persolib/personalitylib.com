@@ -22,20 +22,19 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
-#TODO: linktree für kleinere media verfügbar machen
-#TODO: html/scss vorlage für pages machen
+<!--TODO: html/scss vorlage für pages machen-->
 
 <body>
   <header class="hstack gap-2">
     <h1 class="titel p-2">
-      PersonalityLib
+      PersonalityLib <span class="badge p-2 text-bg-light">BETA</span>
     </h1>
     <div class="link-tree p-2 ms-auto">
       <div class="btn-group" role="group" aria-label="Basic outlined example">
         <button type="button" class="btn btn-outline-primary" onclick="window.location.href='./pages/account/'">
           Account
         </button>
-        <button type="button" class="btn btn-outline-primary" onclick="window.location.href='./pages/login/'"> 
+        <button type="button" class="btn btn-outline-primary" onclick="window.location.href='./pages/login/'">
           Create
         </button>
         <button type="button" class="btn btn-outline-primary" onclick="window.location.href='./pages/about/'">
@@ -75,7 +74,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                ...
+                <!--TODO: Modal Help conntent-->
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -88,14 +87,28 @@
     </div>
   </main>
   <footer>
-    <span>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-      <p>Lorem, ipsum dolor.</p>
+    <span class="">
+      <p>Links:</p>
+      <span class="hstack gap-4 media-uvis">
+        <p class="p-2"><a href="./pages/about/">About</a></p>
+        <p class="p-2"><a href="./pages/legalnotice/">Legal Notice</a></p>
+        <p class="p-2"><a href="./pages/licence/">Licence</a></p>
+        <p class="p-2"><a href="https://github.com/persolib/personalitylib.com">Github</a></p>
+      </span>
+      <span class="media-vis">
+        <span class="hstack gap-2">
+          <p class=""><a href="./pages/about/">About</a></p>
+          <p class=""><a href="./pages/legalnotice/">Legal Notice</a></p>
+        </span>
+        <span class="hstack gap-2">
+          <p class=""><a href="./pages/licence/">Licence</a></p>
+          <p class=""><a href="https://github.com/persolib/personalitylib.com">Github</a></p>
+        </span>
+      </span>
     </span>
     <h1>by JustWait</h1>
-    <span>
-      <p>Lorem ipsum dolor sit amet.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+    <span class="footer-span">
+      <p>© 2024 PersonalityLib</p>
     </span>
   </footer>
 </body>

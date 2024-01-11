@@ -68,3 +68,6 @@ $enable-important-utilities:  true !default;
 
 $enable-dark-mode:            true !default;
 $color-mode-type:             data !default; // `data` or `media-query`
+
+$breadcrumb-divider-color:          rgb(255, 255, 255);
+$breadcrumb-active-color:           rgb(255, 255, 255);

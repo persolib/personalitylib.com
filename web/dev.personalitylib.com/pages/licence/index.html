@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-  <title>About</title>
+  <title>Licence</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="title" content="About" />
+  <meta name="title" content="Licence" />
   <meta name="description"
     content="PersoLib is an open-source project that allows individuals to share their personality data with others." />
   <meta name="keywords"
@@ -19,7 +19,7 @@
   <script src="./assets/js/bootstrap/bootstrap.bundle.min.js"></script>
   <!-- FAVICON -->
   <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="../../assets/css/login.css" />
+  <link rel="stylesheet" href="../../assets/css/licence.css" />
 </head>
 
 <body>
@@ -28,7 +28,8 @@
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb p-2">
         <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">About</li>
+        <li class="breadcrumb-item"><a href="../legalnotice/">Legal Notice</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Licence</li>
       </ol>
     </nav>
 
@@ -40,14 +41,47 @@
         <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../login/'">
           Create
         </button>
-        <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../../index.html'">
-          Home
+        <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../about/'">
+          About
         </button>
       </div>
     </div>
   </header>
   <main>
-    <!--TODO: About conntent-->
+    <div class="licence-card">
+    <div class="card text-center">
+      <div class="card-header">
+        MIT License
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Copyright (c) 2024 Just Wait</h5>
+        <p class="card-text">
+          Permission is hereby granted, free of charge, to any person obtaining a copy
+          of this software and associated documentation files (the "Software"), to deal
+          in the Software without restriction, including without limitation the rights
+          to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+          copies of the Software, and to permit persons to whom the Software is
+          furnished to do so, subject to the following conditions:
+          
+          The above copyright notice and this permission notice shall be included in all
+          copies or substantial portions of the Software.
+          
+          THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+          IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+          FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+          AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+          LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+          OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+          SOFTWARE.
+          </p>
+        <a href="https://github.com/persolib/personalitylib.com" class="btn btn-primary">Github</a>
+      </div>
+      <div class="card-footer text-body-secondary">
+        2024
+      </div>
+    </div>
+  </div>
+  <!--TODO: Make accessible for moblie devices -->
   </main>
   <footer>
     <span class="">

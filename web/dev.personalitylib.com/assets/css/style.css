@@ -4665,9 +4665,9 @@ textarea.form-control-lg {
   --bs-breadcrumb-margin-bottom: 1rem;
   --bs-breadcrumb-bg: ;
   --bs-breadcrumb-border-radius: ;
-  --bs-breadcrumb-divider-color: var(--bs-secondary-color);
+  --bs-breadcrumb-divider-color: rgb(255, 255, 255);
   --bs-breadcrumb-item-padding-x: 0.5rem;
-  --bs-breadcrumb-item-active-color: var(--bs-secondary-color);
+  --bs-breadcrumb-item-active-color: rgb(255, 255, 255);
   display: flex;
   flex-wrap: wrap;
   padding: var(--bs-breadcrumb-padding-y) var(--bs-breadcrumb-padding-x);
@@ -11991,6 +11991,9 @@ body {
   background-color: black;
   overflow: hidden;
 }
+body a {
+  text-decoration: none;
+}
 
 main,
 header,
@@ -12032,6 +12035,9 @@ header .titel {
   color: white;
   font-family: "Share Tech", sans-serif;
 }
+header .breadcrumb {
+  font-family: "Share Tech", sans-serif;
+}
 
 footer {
   padding-right: 22px;
@@ -12049,6 +12055,9 @@ footer span {
   align-items: center;
   text-align: center;
 }
+footer .media-vis {
+  display: none;
+}
 footer span p {
   color: white;
   margin: 0;
@@ -12059,11 +12068,20 @@ footer h1, footer .h1 {
 }
 
 @media screen and (max-width: 1200px) {
-  footer span {
+  footer h1, footer .h1, footer .media-uvis {
     display: none;
+  }
+  footer .media-vis {
+    display: block;
   }
   header .link-tree {
     margin-left: 90%;
+  }
+  header .breadcrumb {
+    display: none;
+  }
+  .licence-card .card {
+    width: 90%;
   }
 }
 .input-div {

@@ -1,8 +1,12 @@
 @mixin media() {
   @media screen and (max-width: 1200px) {
     footer {
-      span {
+      h1, .media-uvis {
         display: none;
+      }
+
+      .media-vis {
+        display: block;
       }
     }
 
@@ -10,6 +14,17 @@
       .link-tree {
         margin-left: 90%;
       }
+
+      .breadcrumb {
+        display: none;
+      }
     }
+
+    .licence-card {
+  
+      .card {
+          width: 90%;
+      }
   }
+  } 
 }
