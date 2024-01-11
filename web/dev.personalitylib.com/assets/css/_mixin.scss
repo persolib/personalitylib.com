@@ -64,10 +64,7 @@
 
         .link-tree {
             font-family: "Chakra Petch", sans-serif;
-            padding-right: 20px;
-            @include displayflex($a: space-between);
             button {@include button-groupe();}
-            width: 15%;
           }
 
         .titel {

@@ -12012,11 +12012,6 @@ header {
 }
 header .link-tree {
   font-family: "Chakra Petch", sans-serif;
-  padding-right: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 15%;
 }
 header .link-tree button {
   background-color: none;
@@ -12064,7 +12059,7 @@ footer h1, footer .h1 {
 }
 
 @media screen and (max-width: 1200px) {
-  footer {
+  footer span {
     display: none;
   }
   header .link-tree {
