@@ -1,0 +1,46 @@
+//all import
+@import "./import";
+
+@include html();
+@include media();
+
+.input-div {
+  width: 100%;
+  @include displayflex();
+
+  nav {
+    font-family: "Share Tech", sans-serif;
+    border-radius: 6px;
+    width: 60%;
+    height: 60px;
+    color: $text;
+    font-size: $input;
+
+    input {
+
+      &:focus {
+        width: 70%;
+        border: 3px dotted $border;
+        margin-right: 25px;
+      }
+    }
+  }
+}
+
+.submit-div {
+  width: 100%;
+  @include displayflex();
+
+  .button-submit-div {
+    padding-top: 10px;
+    width: 50%;
+    @include displayflex($a: left);
+    button {@include button-groupe();}
+  }
+}
+
+.submit {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+

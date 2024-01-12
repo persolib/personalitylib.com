@@ -23,7 +23,7 @@
 </head>
 
 <body>
-  <header class="hstack gap-2">
+  <header class="z-1 hstack gap-2">
     <h1 class="titel p-2">PersonalityLib</h1>
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb p-2">
@@ -34,6 +34,9 @@
     </nav>
 
     <div class="link-tree p-2 ms-auto">
+      <button type="button" class="btn btn-outline-primary home" onclick="window.location.href='../../'">
+        Home
+      </button>
       <div class="btn-group" role="group" aria-label="Basic outlined example">
         <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../account/'">
           Account
@@ -47,7 +50,7 @@
       </div>
     </div>
   </header>
-  <main>
+  <main class="z-0">
     <div class="licence-card">
     <div class="card text-center">
       <div class="card-header">
@@ -81,11 +84,10 @@
       </div>
     </div>
   </div>
-  <!--TODO: Make accessible for moblie devices -->
   </main>
-  <footer>
+  <footer class="z-1">
     <span class="">
-      <p>Links:</p>
+      <p class="footer-p">Links:</p>
       <span class="hstack gap-4 media-uvis">
         <p class="p-2"><a href="../about/">About</a></p>
         <p class="p-2"><a href="../legalnotice/">Legal Notice</a></p>

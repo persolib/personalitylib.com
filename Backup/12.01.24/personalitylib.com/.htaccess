@@ -1,0 +1,9 @@
+ErrorDocument 404 https://error.personalitylib.com/404/
+ErrorDocument 500 https://error.personalitylib.com/500/
+ErrorDocument 401 https://error.personalitylib.com/401/
+ErrorDocument 403 https://error.personalitylib.com/403/
+
+Authtype Basic
+AuthName "test"
+require valid-user
+AuthUserFile /home/sites/site100035052/web/test.personalitylib.com/.htpasswd

@@ -19,7 +19,7 @@
   <script src="./assets/js/bootstrap/bootstrap.bundle.min.js"></script>
   <!-- FAVICON -->
   <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="../../assets/css/login.css" />
+  <link rel="stylesheet" href="../../assets/css/account.css" />
 </head>
 
 <body>
@@ -33,9 +33,12 @@
     </nav>
 
     <div class="link-tree p-2 ms-auto">
+      <button type="button" class="btn btn-outline-primary home" onclick="window.location.href='../../'">
+        Home
+      </button>
       <div class="btn-group" role="group" aria-label="Basic outlined example">
-        <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../../index.html'">
-          Home
+        <button type="button" class="btn btn-outline-primary active" onclick="window.location.href='../account/'">
+          Account
         </button>
         <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../login/'">
           Create

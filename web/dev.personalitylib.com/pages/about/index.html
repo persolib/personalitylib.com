@@ -19,7 +19,7 @@
   <script src="./assets/js/bootstrap/bootstrap.bundle.min.js"></script>
   <!-- FAVICON -->
   <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="../../assets/css/login.css" />
+  <link rel="stylesheet" href="../../assets/css/about.css" />
 </head>
 
 <body>
@@ -33,6 +33,9 @@
     </nav>
 
     <div class="link-tree p-2 ms-auto">
+      <button type="button" class="btn btn-outline-primary home" onclick="window.location.href='../../'">
+        Home
+      </button>
       <div class="btn-group" role="group" aria-label="Basic outlined example">
         <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../account/'">
           Account
@@ -40,14 +43,52 @@
         <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../login/'">
           Create
         </button>
-        <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../../index.html'">
-          Home
+        <button type="button" class="btn btn-outline-primary active" onclick="window.location.href='../about/'">
+          About
         </button>
       </div>
     </div>
   </header>
-  <main>
-    <!--TODO: About conntent-->
+  <main class="z-0">
+    <div class="about-card">
+      <div class="card text-center">
+        <div class="card-header">
+          <strong>About PersonalityLib</strong>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            <p>is an open-source project that allows individuals to share their personality data with others. The
+            project is based on the idea that by sharing our personality information, we can learn more about ourselves
+            and connect with others who are similar to us.</p>
+
+            <p>The PersoLib platform allows users to create profiles that describe their personality traits, interests, and
+            values. Users can then share their profiles with others, either privately or publicly. When users connect
+            with others on PersoLib, they can see how their personalities compare to each other. This can help them to
+            identify potential friends, romantic partners, and collaborators.</p>
+
+            <p> PersoLib project is still in its early stages of development, but it has the potential to revolutionize
+            the way we interact with each other online. By sharing our personality data, we can create a more
+            personalized and meaningful online experience.</p><br>
+
+            <strong>Here are some of the benefits of using PersoLib:</strong><br>
+
+            Improved self-understanding: By reflecting on our personality traits, interests, and values, we can gain a
+            better understanding of who we are. <br>
+            Enhanced connection with others: PersoLib can help us to connect with people who share our interests and
+            values. <br>
+            Reduced social isolation: PersoLib can help us to overcome social anxiety and build meaningful
+            relationships. <br>
+            Increased productivity: PersoLib can help us to identify our strengths and weaknesses, which can improve our
+            productivity. <br>
+            Personalized recommendations: PersoLib can provide us with personalized recommendations for products,
+            services, and activities.
+        </div>
+        <div class="card-footer text-body-secondary">
+          If you are interested in learning more about PersoLib, please visit the project's website at
+          https://personalitylib.com.
+        </div>
+      </div>
+    </div>
   </main>
   <footer>
     <span class="">

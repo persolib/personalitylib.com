@@ -1,14 +1,28 @@
 {
     "files.exclude": {
-        ".github": false,
-        ".vscode": false,
-        "LICENSE": false,
-        "README.md": false,
-        "web\\error.personalitylib.com": false,
-        "web\\personalitylib.com": false,
-        "web\\soon.personalitylib.com": false,
-        "Backup/10.01.24": false,
-        "Backup": false
+        ".github": true,
+        ".vscode": true,
+        "LICENSE": true,
+        "README.md": true,
+        "web\\error.personalitylib.com": true,
+        "web\\personalitylib.com": true,
+        "web\\soon.personalitylib.com": true,
+        "Backup/10.01.24": true,
+        "Backup": true,
+        "web/dev.personalitylib.com/assets/css/template.css.map": true,
+        "web/dev.personalitylib.com/assets/css/template.css": true,
+        "web/dev.personalitylib.com/assets/css/style.css.map": true,
+        "web/dev.personalitylib.com/assets/css/style.css": true,
+        "web/dev.personalitylib.com/assets/css/login.css.map": true,
+        "web/dev.personalitylib.com/assets/css/login.css": true,
+        "web/dev.personalitylib.com/assets/css/licence.css.map": true,
+        "web/dev.personalitylib.com/assets/css/licence.css": true,
+        "web/dev.personalitylib.com/assets/css/legalnotice.css.map": true,
+        "web/dev.personalitylib.com/assets/css/legalnotice.css": true,
+        "web/dev.personalitylib.com/assets/css/account.css.map": true,
+        "web/dev.personalitylib.com/assets/css/account.css": true,
+        "web/dev.personalitylib.com/assets/css/about.css.map": true,
+        "web/dev.personalitylib.com/assets/css/about.css": true
     },
-    "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5502
 }
