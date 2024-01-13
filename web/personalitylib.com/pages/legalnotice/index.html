@@ -16,7 +16,7 @@
   <meta name="revisit-after" content="2 days" />
   <meta name="author" content="JustWait" />
   <!-- BOOTTSTRAP -->
-  <script src="./assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
   <!-- FAVICON -->
   <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="../../assets/css/legalnotice.css" />
@@ -48,6 +48,23 @@
         <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../about/'">
           About
         </button>
+        <!-- Modal -->
+        <div class="modal fade" id="betaModal" tabindex="-1" aria-labelledby="betaModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="betaModalLabel">Open Beta</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                This website is still under construction and is in an open beta
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </header>
