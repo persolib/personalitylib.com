@@ -1,57 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>recaptcha</title>
-</head>
-
-<body>
+<html>
+  <head>
+    <title>hCaptcha Demo</title>
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+  </head>
+  <body>
     <form action="#" method="POST">
-        <div>
-            <input type="email" name="email" placeholder="Email">
-        </div>
-        <div>
-            <div class="g-recaptcha" theme="dark" data-sitekey="6LfZ_08pAAAAAFVYY9Dov9Zyf8LDScctAutnsLxk"></div>
-        </div>
-        <div>
-            <button>Submit</button>
-        </div>
+      <input type="text" name="email" placeholder="Email" />
+      <input type="password" name="password" placeholder="Password" />
+      <div class="h-captcha" data-sitekey="d34e4db5-5695-4abb-be9a-c475793946e1"></div>
+      <br />
+      <input type="submit" value="Submit" />
     </form>
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-
     <?php
-    function reCaptcha($recaptcha)
-    {
-        $secret = "6LfZ_08pAAAAAJ_F3MaWw2JM7qBX7-IbtEexyn7W";
-        $ip = $_SERVER['REMOTE_ADDR'];
+$data = array(
+            'secret' => "ES_2866cf23d12b446492e55e7d96719c56",
+            'response' => $_POST['h-captcha-response']
+        );
+$verify = curl_init();
+curl_setopt($verify, CURLOPT_URL, "https://hcaptcha.com/siteverify");
+curl_setopt($verify, CURLOPT_POST, true);
+curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query($data));
+curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
+$response = curl_exec($verify);
+// var_dump($response);
+$responseData = json_decode($response);
+if($responseData->success) {
+    // your success code goes here
+} 
+else {
+   // return error to user; they did not pass
+}
+?>
 
-        $postvars = array("secret" => $secret, "response" => $recaptcha, "remoteip" => $ip);
-        $url = "https://www.google.com/recaptcha/api/siteverify";
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $postvars);
-        $data = curl_exec($ch);
-        curl_close($ch);
-
-        return json_decode($data, true);
-    }
-
-    $recaptcha = $_POST['g-recaptcha-response'];
-
-    $res = reCaptcha($recaptcha);
-
-    if ($res['success']) {
-        $email = $_POST['email'];
-        echo "Success " . $email;
-    } else {
-        echo "CAPTCHA Failed";
-    }
-    ?>
-</body>
-
+  </body>
 </html>
