@@ -25,10 +25,10 @@ $response = curl_exec($verify);
 // var_dump($response);
 $responseData = json_decode($response);
 if($responseData->success) {
-    // your success code goes here
+    echo("succes");
 } 
 else {
-   // return error to user; they did not pass
+   echo("failed");
 }
 ?>
 
