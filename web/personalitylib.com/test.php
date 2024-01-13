@@ -13,7 +13,7 @@
             <input type="email" name="email" placeholder="Email">
         </div>
         <div>
-            <div class="g-recaptcha" data-sitekey="6Lc1PxElAAAAABQbBMhv0U5JnHrPy7lQayGK06vi"></div>
+            <div class="g-recaptcha" data-sitekey="6LfZ_08pAAAAAFVYY9Dov9Zyf8LDScctAutnsLxk"></div>
         </div>
         <div>
             <button>Submit</button>
@@ -24,7 +24,7 @@
     <?php
     function reCaptcha($recaptcha)
     {
-        $secret = "6Lc1PxElAAAAALss17mz0Cz_eoVg-LMohwU67ddN";
+        $secret = "6LfZ_08pAAAAAJ_F3MaWw2JM7qBX7-IbtEexyn7W";
         $ip = $_SERVER['REMOTE_ADDR'];
 
         $postvars = array("secret" => $secret, "response" => $recaptcha, "remoteip" => $ip);
