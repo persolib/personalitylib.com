@@ -12041,8 +12041,10 @@ header .link-tree .active {
 }
 header .titel {
   padding-left: 12px;
-  color: white;
   font-family: "Share Tech", sans-serif;
+}
+header .titel a {
+  color: white;
 }
 header .breadcrumb {
   font-family: "Share Tech", sans-serif;

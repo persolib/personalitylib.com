@@ -86,8 +86,10 @@
     }
 
     .titel {
-      padding-left: 12px;
+      a {
       color: $text;
+      }
+      padding-left: 12px;
       font-family: "Share Tech", sans-serif;
     }
 
