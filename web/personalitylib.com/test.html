@@ -1,22 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>reTest</title>
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-</head>
-
-<body>
-    <script>
-        function onSubmit(token) {
-            document.getElementById("demo-form").submit();
-        }
-    </script>
-    <form id="demo-form"></form>
-    <button class="g-recaptcha" data-sitekey="6LeG708pAAAAANoXiIFDwLl-padfNWbr_gsys0dG" data-callback='onSubmit'
-        data-action='submit'>Submit</button>
-</body>
-<!--6LeG708pAAAAAHXwhyj0y9sTFCFIduSVYpOV3Si4-->
+<html>
+  <head>
+    <title>reCAPTCHA demo: Simple page</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body>
+    <form action="?" method="POST">
+      <div class="g-recaptcha" data-sitekey="6Lci_k8pAAAAAK72mbX1Kd6GWwPpNllirW-DlJwC"></div>
+      <br/>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
 </html>
