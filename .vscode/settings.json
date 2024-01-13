@@ -22,7 +22,8 @@
         "web/dev.personalitylib.com/assets/css/account.css.map": false,
         "web/dev.personalitylib.com/assets/css/account.css": false,
         "web/dev.personalitylib.com/assets/css/about.css.map": false,
-        "web/dev.personalitylib.com/assets/css/about.css": false
+        "web/dev.personalitylib.com/assets/css/about.css": false,
+        "web/dev.personalitylib.com": false
     },
     "liveServer.settings.port": 5502
 }

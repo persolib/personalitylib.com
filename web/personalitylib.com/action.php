@@ -1,27 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>recaptcha</title>
-</head>
-
-<body>
-    <form action="action.php" method="POST">
-        <div>
-            <input type="email" name="email" placeholder="Email">
-        </div>
-        <div>
-            <div class="g-recaptcha" data-sitekey="6LfZ_08pAAAAAFVYY9Dov9Zyf8LDScctAutnsLxk"></div>
-        </div>
-        <div>
-            <button>Submit</button>
-        </div>
-    </form>
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-
-    <?php
+<?php
     function reCaptcha($recaptcha)
     {
         $secret = "6LfZ_08pAAAAAJ_F3MaWw2JM7qBX7-IbtEexyn7W";
@@ -52,6 +29,3 @@
         echo "CAPTCHA Failed";
     }
     ?>
-</body>
-
-</html>
