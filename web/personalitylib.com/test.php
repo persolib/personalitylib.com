@@ -13,7 +13,7 @@
             <input type="email" name="email" placeholder="Email">
         </div>
         <div>
-            <div class="g-recaptcha" data-sitekey="6LfZ_08pAAAAAFVYY9Dov9Zyf8LDScctAutnsLxk"></div>
+            <div class="g-recaptcha" theme="dark" data-sitekey="6LfZ_08pAAAAAFVYY9Dov9Zyf8LDScctAutnsLxk"></div>
         </div>
         <div>
             <button>Submit</button>
