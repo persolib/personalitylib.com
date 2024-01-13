@@ -12,7 +12,7 @@
   // var_dump($response);
   $responseData = json_decode($response);
   if ($responseData->success) {
-    header('Location: /test.php');
+    header('Location: /index.html');
 exit();
   } else {
     echo ("failed");
