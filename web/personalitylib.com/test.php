@@ -6,6 +6,7 @@
 </head>
 
 <body>
+  <!--füge zu dem Form noch mehr input felder hinzu-->
   <form action="action.php" method="POST">
     <input type="text" name="email" placeholder="Email" />
     <input type="password" name="password" placeholder="Password" />
