@@ -1,5 +1,5 @@
 // Dateien laden
-const files_footer = [""];
+const files_footer_pages = [""];
 
 // Inhalt aus `template.html` lesen
 const request_footer = new XMLHttpRequest();
@@ -10,7 +10,7 @@ request_footer.onload = () => {
   const templateContent = request_footer.responseText;
 
   // Inhalt in `<footer>`-Tags einfügen
-  files_footer.forEach(file => {
+  files_footer_pages.forEach(file => {
     const footer = document.querySelector(`footer`, file);
     footer.innerHTML += templateContent;
   });
