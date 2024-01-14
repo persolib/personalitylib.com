@@ -1,3 +1,0 @@
-User-Agent: *
-Disallow: /siteadmin
-Sitemap: http://personalitylib.com/sitemap.xml
