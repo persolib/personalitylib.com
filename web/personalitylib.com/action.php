@@ -12,7 +12,7 @@
   // var_dump($response);
   $responseData = json_decode($response);
   if ($responseData->success) {
-    header('Location: https://personalitylib.com/test.php?captcha=succes');
+    echo("succes");
 exit();
   } else {
     echo ("failed");
