@@ -3,3 +3,7 @@
 
 @include html();
 @include media();
+
+form {
+    @include form();
+}

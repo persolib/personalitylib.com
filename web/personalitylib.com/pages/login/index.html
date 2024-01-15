@@ -12,6 +12,9 @@
   <!--CookieBot-->
   <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="64b1aa85-4d2b-4819-a7b2-f018ef40471b"
     data-blockingmode="auto" type="text/javascript"></script>
+  <!--Google-->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="1059093114045-141qgsitstbnche5hbbmohb9aisftlq9.apps.googleusercontent.com.apps.googleusercontent.com">
 </head>
 
 <body>
@@ -59,12 +62,13 @@
     </div>
   </header>
   <main>
+   <!-- The code you provided is an HTML form. It allows users to input their email address and password
+   for logging in. -->
     <form>
-      <div>
+      <div class="container">
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <label for="exampleInputEmail1" class="form-label">Username</label>
           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -75,6 +79,18 @@
           <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+        <!--Google Signin Test START-->
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <script>
+          function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+          }
+          </script>
+        <!--Google Signin Test END-->
       </div>
     </form>
   </main>

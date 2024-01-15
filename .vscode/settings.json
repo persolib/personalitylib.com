@@ -24,5 +24,6 @@
         "web/personalitylib.com/assets/css/about.css.map": false
     },
     "liveServer.settings.port": 5502,
-    "docwriter.style": "Auto-detect"
+"docwriter.style": "Auto-detect",
+"docwriter.hotkey.mac": "⌥ + ."
 }

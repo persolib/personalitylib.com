@@ -4,6 +4,16 @@
   align-items: $b;
 }
 
+@mixin form() {
+  .container {
+    width: 50%;
+    color: $text;
+    button {
+        @include button-groupe();
+    }
+}
+}
+
 @mixin padding-both($a, $b) {
   padding-right: $a;
   padding-left: $b;

@@ -12108,4 +12108,22 @@ footer h1, footer .h1 {
   header .link-tree {
     display: none;
   }
+}
+form .container {
+  width: 50%;
+  color: white;
+}
+form .container button {
+  background-color: none;
+  border-color: whitesmoke;
+  color: white;
+  width: 90px;
+  transition: 0.4s;
+}
+form .container button:hover {
+  width: 110px;
+  border-color: #000;
+  color: black;
+  background-color: white;
+  border-style: dashed;
 }/*# sourceMappingURL=login.css.map */
