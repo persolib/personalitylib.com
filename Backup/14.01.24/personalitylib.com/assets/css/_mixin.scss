@@ -1,0 +1,131 @@
+@mixin displayflex($a: center, $b: center) {
+  display: flex;
+  justify-content: $a;
+  align-items: $b;
+}
+
+@mixin padding-both($a, $b) {
+  padding-right: $a;
+  padding-left: $b;
+}
+
+@mixin margin-both($a, $b) {
+  margin-right: $a;
+  margin-left: $b;
+}
+
+@mixin button-groupe {
+  background-color: none;
+  border-color: $border;
+  color: $text;
+  width: 90px;
+  transition: 0.4s;
+
+  &:hover {
+    width: 110px;
+    border-color: $black;
+    color: $text-background;
+    background-color: white;
+    border-style: dashed;
+  }
+}
+
+@mixin html() {
+  html {
+    height: 99%;
+  }
+
+  body {
+    @include displayflex();
+    height: 100%;
+    position: relative;
+    background-color: $main;
+    overflow: hidden;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  main,
+  header,
+  footer {
+    position: absolute;
+  }
+
+  main {
+    align-items: center;
+    width: 100%;
+    background-color: $main;
+    max-height: 79%;
+    /* Set the maximum height of the main section */
+    overflow: hidden;
+    /* Hide the scrollbar by default */
+    overflow-y: auto;
+    /* Show the scrollbar when the content overflows */
+  }
+
+  header {
+    //@include displayflex($a: space-between);
+    width: 100%;
+    height: 10%;
+    background-color: $main;
+    top: 0;
+
+    .link-tree {
+      font-family: "Chakra Petch", sans-serif;
+
+      button {
+        @include button-groupe();
+
+      }
+
+      .active {
+        border-color: $border;
+      }
+    }
+
+    .titel {
+      a {
+      color: $text;
+      }
+      padding-left: 12px;
+      font-family: "Share Tech", sans-serif;
+    }
+
+    .breadcrumb {
+      font-family: "Share Tech", sans-serif;
+
+    }
+  }
+
+  footer {
+    @include padding-both(22px, 22px);
+    @include displayflex($a: space-between);
+    width: 100%;
+    height: 10%;
+    background-color: $main;
+    bottom: 0;
+
+    span {
+      font-family: "Share Tech", sans-serif;
+      align-items: center;
+      text-align: center;
+    }
+
+    .media-vis {
+      display: none;
+    }
+
+    span p {
+      color: $text;
+      margin: 0;
+    }
+
+    h1 {
+      font-family: "Share Tech", sans-serif;
+      color: $text;
+    }
+
+  }
+}
