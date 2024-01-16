@@ -1,5 +1,7 @@
-RewriteRule ^/pages/about$ /pages/about/index.html [L]
-RewriteRule ^/pages/login$ /pages/login/index.html [L]
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} ^/(login|about|account|licence|legalnotice)
+RewriteRule ^(.*)$ /pages/$1 [R=301,L]
 
 ErrorDocument 404 https://error.personalitylib.com/404/
 ErrorDocument 500 https://error.personalitylib.com/500/
