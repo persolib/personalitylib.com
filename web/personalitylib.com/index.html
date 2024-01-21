@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>PersonalityLib</title>
+  <meta name="title" content="PersonalityLib"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <!-- The line `<script src="./assets/js/import/head.js"></script>` is including an external JavaScript
+  file called "head.js" in the HTML document. This script is likely responsible for adding
+  functionality or performing certain actions related to the head section of the webpage. -->
+  <script src="./assets/js/import/head.js"></script>
+  <!--Google Ads-->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4168649657374641"
+    crossorigin="anonymous"></script>
+  <!--CookieBot-->
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="64b1aa85-4d2b-4819-a7b2-f018ef40471b"
+    data-blockingmode="auto" type="text/javascript"></script>
+</head>
+<body>
+  <header class="hstack gap-2">
+    <h1 class="titel p-2">
+      <a href="https://personalitylib.com/">PersonalityLib</a> <span class="badge p-2 text-bg-light">BETA</span>
+    </h1>
+    <div class="link-tree p-2 ms-auto">
+      <button type="button" class="btn btn-outline-primary active home" onclick="window.location.href='../../'">
+        Home
+      </button>
+      <div class="btn-group" role="group" aria-label="Basic outlined example">
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#betaModal">
+          LogIn
+        </button>
+        <button type="button" class="btn btn-outline-primary create" data-bs-toggle="modal" data-bs-target="#betaModal">
+          Create
+        </button>
+        <button type="button" class="btn btn-outline-primary" onclick="window.location.href='./pages/about/'">
+          About
+        </button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="input-div">
+      <nav class="navbar bg-body-tertiary">
+        <form class="container-fluid">
+          <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">#</span>
+            <input type="text" class="form-control" placeholder="PersoTag" aria-label="PeroTag"
+              aria-describedby="basic-addon1">
+          </div>
+        </form>
+      </nav>
+    </div>
+    <div class="submit-div">
+      <div class="button-submit-div">
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#betaModal">
+            Search
+          </button>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#betaModal">
+            Help
+          </button>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="betaModal" tabindex="-1" aria-labelledby="betaModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="betaModalLabel">Open Beta</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                This website is still under construction and is in an open beta
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <!-- The line `<script src="./assets/js/import/footer.js"></script>` is including an external
+    JavaScript file called "footer.js" in the HTML document. This script is likely responsible for
+    adding functionality or performing certain actions related to the footer section of the webpage. -->
+    <script src="./assets/js/import/footer.js"></script>
+  </footer>
+</body>
+
+</html>

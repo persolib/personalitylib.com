@@ -1,5 +1,29 @@
 {
     "files.exclude": {
-        ".vscode": true
-    }
+        ".github": true,
+        ".vscode": true,
+        "Backup": true,
+        "README.md": true,
+        "LICENSE": true,
+        "web/soon.personalitylib.com": true,
+        "web/dev.personalitylib.com": true,
+        "web/error.personalitylib.com": true,
+        "web/personalitylib.com/assets/css/template.css": true,
+        "web/personalitylib.com/assets/css/template.css.map": true,
+        "web/personalitylib.com/assets/css/style.css.map": true,
+        "web/personalitylib.com/assets/css/style.css": true,
+        "web/personalitylib.com/assets/css/login.css": true,
+        "web/personalitylib.com/assets/css/login.css.map": true,
+        "web/personalitylib.com/assets/css/legalnotice.css": true,
+        "web/personalitylib.com/assets/css/legalnotice.css.map": true,
+        "web/personalitylib.com/assets/css/licence.css": true,
+        "web/personalitylib.com/assets/css/licence.css.map": true,
+        "web/personalitylib.com/assets/css/account.css": true,
+        "web/personalitylib.com/assets/css/account.css.map": true,
+        "web/personalitylib.com/assets/css/about.css": true,
+        "web/personalitylib.com/assets/css/about.css.map": true
+    },
+    "liveServer.settings.port": 5502,
+"docwriter.style": "Auto-detect",
+"docwriter.hotkey.mac": "⌥ + ."
 }

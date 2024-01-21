@@ -1,0 +1,28 @@
+on: push
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+      - name: 📂 Sync files
+        uses: Dylan700/sftp-upload-action@latest
+        with:
+          server: ngcobalt116.manitu.net
+          username: ftp200027816
+          password: ${{ secrets.PASW }}
+          port: 23
+          uploads: |
+            ./web => ./web
+          ignore: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            ../../web/dev.personalitylib.com/assets/css/scss
+            ../../web/dev.personalitylib.com/assets/css/style.scss 
+            ../../web/dev.personalitylib.com/assets/css/style.css.map
+            LICENSE
+            README.txt
+
