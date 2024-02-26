@@ -97,12 +97,13 @@ jQuery(document).ready(function($) {
 
                 if(json.valid === 0) {
                     
-                    $('.subscribe-form').addClass("form-error");
+                    
+                    $('.subscribe-form').addClass("form-success");
+                    $('.subscribe-form input,.subscribe-form button').val('').prop('disabled', true);
                     
                 } else {
 
-                    $('.subscribe-form').addClass("form-success");
-                    $('.subscribe-form input,.subscribe-form button').val('').prop('disabled', true);
+                    $('.subscribe-form').addClass("form-error");
                     
                 }
                 
