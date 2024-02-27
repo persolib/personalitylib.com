@@ -1,0 +1,61 @@
+@mixin media() {
+  @media screen and (max-width: 1200px) {
+    footer {
+      h1 {
+        display: none;
+      }
+    }
+
+    header {
+      .link-tree {
+        margin-left: 90%;
+      }
+
+      .breadcrumb {
+        display: none;
+      }
+    }
+
+    .licence-card {
+
+      .card {
+        width: 90%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+
+    footer {
+
+      .footer-p,
+      .media-uvis {
+        display: none;
+      }
+
+      .media-vis {
+        display: block;
+      }
+
+  
+
+    }
+
+    header {
+      .link-tree {
+        .active, .home, .create {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    header {
+      .link-tree {
+        display: none;
+      }
+
+    }
+  }
+}

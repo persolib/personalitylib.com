@@ -1,0 +1,14 @@
+//all import
+@import "./import";
+
+@include html(); 
+@include media();
+
+.licence-card {
+    @include displayflex();
+    width: 100%;
+
+    .card {
+        width: 80%;
+    }
+}
