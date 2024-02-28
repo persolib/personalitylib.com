@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="shortcut icon" href="public/favicon.ico" type="image/x-icon">
+    <title>SQL Test</title>
 </head>
 
 <body>
@@ -20,10 +21,10 @@
       try {
           $db = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $username, $password);
           // Verbindung erfolgreich
-          echo "Verbindung zur Datenbank erfolgreich hergestellt!";
+          echo "Connection successful";
       } catch (PDOException $e) {
           // Verbindung fehlgeschlagen
-          echo "Verbindung zur Datenbank fehlgeschlagen: " . $e->getMessage();
+          echo "Connection Failed: " . $e->getMessage();
       }
 
       // ... hier den Code für die Abfragen und Aktionen in der Datenbank einfügen ...
