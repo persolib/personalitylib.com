@@ -24,6 +24,22 @@
   margin-left: $b;
 }
 
+@mixin input-button-groupe {
+  background-color: none;
+  border-color: $border-background;
+  color: $text-background;
+  width: 90px;
+  transition: 0.4s;
+
+  &:hover {
+    width: 110px;
+    border-color: $border;
+    color: $text;
+    background-color: $black;
+    border-style: dashed;
+  }
+}
+
 @mixin button-groupe {
   background-color: none;
   border-color: $border;
@@ -35,7 +51,7 @@
     width: 110px;
     border-color: $black;
     color: $text-background;
-    background-color: white;
+    background-color: $white;
     border-style: dashed;
   }
 }

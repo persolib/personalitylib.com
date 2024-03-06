@@ -1,3 +1,34 @@
+// The code checks if a tag is provided via GET or POST methods. It validates the tag length and content, then redirects
+to a URL with the tag if it meets the criteria. The tag prefix and style are adjusted based on validation results.
+<?php
+    $prefix = "#";
+    $style = "";
+    if (isset($_GET['tag'])) {
+        $tag = $_GET["tag"];
+    }else{
+        if (!isset($_POST["tag"]) || empty($_POST["tag"])) {
+            $prefix = "#"; // Empty tag
+            $style = "";
+        } else if (!ctype_digit($_POST["tag"])) {
+            $prefix = "has to be just numbers"; // Not only digits
+            $style = "color:red;";
+        } else {
+            $length = strlen($_POST["tag"]);
+            if ($length < 6) {
+                $prefix = "too short"; // Less than 6 digits
+                $style = "color:red;";
+            } else if ($length > 6) {
+                $prefix = "too long"; // More than 6 digits
+                $style = "color:red;";
+            } else{
+                $style = "";
+                $url = "personality?tag=" . urlencode($_POST["tag"]);
+                header("Location: $url");
+                exit;
+            }
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,52 +85,55 @@
     <main>
         <div class="input-div">
             <nav class="navbar bg-body-tertiary">
-                <form class="container-fluid">
+                <form class="container-fluid" action="index.php" method="POST">
                     <div class="input-group">
-                        <span class="input-group-text" id="basic-addon1">#</span>
-                        <input type="text" class="form-control" placeholder="PersoTag" aria-label="PeroTag"
-                            aria-describedby="basic-addon1" />
+
+                        <?php 
+                        echo '<label for="tag" class="input-group-text" id="basic-addon1" style="'.$style.'">'.$prefix.'</label>';
+                        ?>
+                        <input type="text" id="tag" class="form-control" placeholder="PersoTag" aria-label="PersoTag"
+                            name="tag" aria-describedby="basic-addon1" />
+
                     </div>
-                </form>
-            </nav>
-        </div>
-        <div class="submit-div">
-            <div class="button-submit-div">
-                <div class="btn-group" role="group" aria-label="Basic outlined example">
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                        data-bs-target="#betaModal">
-                        Search
-                    </button>
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                        data-bs-target="#betaModal">
-                        Help
-                    </button>
-                </div>
-                <!-- Modal -->
-                <div class="modal fade" id="betaModal" tabindex="-1" aria-labelledby="betaModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="betaModalLabel">
-                                    Open Beta
-                                </h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                This website is still under construction and is in an open
-                                beta
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
-                                    Close
+                    <div class="submit-div">
+                        <div class="button-submit-div">
+                            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                <input type="submit" value="Send" class="input-button btn btn-outline-primary"></input>
+                                <button type="button" class="input-button btn btn-outline-primary"
+                                    data-bs-toggle="modal" data-bs-target="#betaModal">
+                                    Help
+                                    <!--TODO: Make Help Modal-->
                                 </button>
+
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="betaModal" tabindex="-1" aria-labelledby="betaModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="betaModalLabel">
+                                                Open Beta
+                                            </h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            This website is still under construction and is in an open
+                                            beta
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                                                Close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </form>
+            </nav>
         </div>
     </main>
     <footer>

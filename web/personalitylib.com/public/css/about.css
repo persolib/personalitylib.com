@@ -12033,7 +12033,7 @@ header .link-tree button:hover {
   width: 110px;
   border-color: #000;
   color: black;
-  background-color: white;
+  background-color: #fff;
   border-style: dashed;
 }
 header .link-tree .active {

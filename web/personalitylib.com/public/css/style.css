@@ -12033,7 +12033,7 @@ header .link-tree button:hover {
   width: 110px;
   border-color: #000;
   color: black;
-  background-color: white;
+  background-color: #fff;
   border-style: dashed;
 }
 header .link-tree .active {
@@ -12119,41 +12119,40 @@ footer h1, footer .h1 {
   font-family: "Share Tech", sans-serif;
   border-radius: 6px;
   width: 60%;
-  height: 60px;
+  height: autp;
   color: white;
   font-size: 30pt;
 }
-.input-div nav input:focus {
+.input-div nav .input-group input:focus {
   width: 70%;
   border: 3px dotted whitesmoke;
   margin-right: 25px;
 }
-
-.submit-div {
+.input-div nav .submit-div {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
 }
-.submit-div .button-submit-div {
+.input-div nav .submit-div .button-submit-div {
   padding-top: 10px;
   width: 50%;
   display: flex;
   justify-content: left;
   align-items: center;
 }
-.submit-div .button-submit-div button {
+.input-div nav .submit-div .button-submit-div .input-button {
   background-color: none;
-  border-color: whitesmoke;
-  color: white;
+  border-color: black;
+  color: black;
   width: 90px;
   transition: 0.4s;
 }
-.submit-div .button-submit-div button:hover {
+.input-div nav .submit-div .button-submit-div .input-button:hover {
   width: 110px;
-  border-color: #000;
-  color: black;
-  background-color: white;
+  border-color: whitesmoke;
+  color: white;
+  background-color: #000;
   border-style: dashed;
 }
 
