@@ -1,15 +1,15 @@
 <?php
     //sql-local
-    $servername = "localhost";
-    $sql_username = "root";
-    $password = "";
-    $dbname = "personalitylib";
+    // $servername = "localhost";
+    // $sql_username = "root";
+    // $password = "";
+    // $dbname = "personalitylib";
     
     //sql-server
-    // $servername = "mysql10.manitu.net";
-    // $username = "u100110";
-    // $password = "ShJ6nHfvrWFyr9Nu";
-    // $dbname = "db100110";
+    $servername = "mysql10.manitu.net";
+    $sql_username = "u100110";
+    $password = "ShJ6nHfvrWFyr9Nu";
+    $dbname = "db100110";
     
     if (isset($_GET['tag'])) {
         // Create connection

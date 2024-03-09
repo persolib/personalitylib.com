@@ -1,15 +1,15 @@
 <?php
     //sql-local
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "personalitylib";
+    // $servername = "localhost";
+    // $username = "root";
+    // $password = "";
+    // $dbname = "personalitylib";
     
     //sql-server
-    // $servername = "mysql10.manitu.net";
-    // $username = "u100110";
-    // $password = "ShJ6nHfvrWFyr9Nu";
-    // $dbname = "db100110";
+    $servername = "mysql10.manitu.net";
+    $username = "u100110";
+    $password = "ShJ6nHfvrWFyr9Nu";
+    $dbname = "db100110";
 
     $value = "PersoTag";
     if (isset($_GET['tag'])) {
