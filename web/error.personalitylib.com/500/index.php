@@ -1,5 +1,32 @@
+<?php
+if (isset($_GET['error'])) {
+	$error = $_GET["error"];  
+	if ($error == "userid") {
+		if (isset($_GET['id'])) {
+			$id = $_GET["id"];  
+		} else {
+			$id = "(Not found)";
+		}
+		$msg = "The UserId ".$id." was not found in our Database.";
+	} else if (($error == "persotag")) {
+		if (isset($_GET['tag'])) {
+			$tag = $_GET["tag"];  
+		} else {
+			$tag = "(Not found)";
+		}
+		$msg = "The PersoTag ".$tag." was not found in our Database.";
+	} else if (($error == "sql")) {
+		$msg = "Can't connect to SQL Server.";
+	} else {
+		$msg = "There was an unknown Error.";
+	}
+} else {
+	$msg = "Houston, we have a problem.";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +34,7 @@
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <title>Error - 500</title>
 </head>
+
 <body>
 
     <div class="container">
@@ -347,8 +375,10 @@
         </div>
 
         <h1 class="MainTitle">
-            Houston, we have a problem.
-        </h1>
+            <?php
+            	echo "<h1>$msg</h1>";
+			?>
+            <h2><a style="color: #274c5e;" href="https://personalitylib.com/">Go back</a></h2>
     </div>
 
 </body>

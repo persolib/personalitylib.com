@@ -12026,11 +12026,10 @@ header .link-tree button {
   background-color: none;
   border-color: whitesmoke;
   color: white;
-  width: 90px;
+  width: auto;
   transition: 0.4s;
 }
 header .link-tree button:hover {
-  width: 110px;
   border-color: #000;
   color: black;
   background-color: #fff;
@@ -12090,6 +12089,14 @@ footer h1, footer .h1 {
   }
   .licence-card .card {
     width: 90%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .accordion-none {
+    display: none;
+  }
+  .list-group {
+    display: none;
   }
 }
 @media screen and (max-width: 700px) {

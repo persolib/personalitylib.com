@@ -1,28 +1,57 @@
-// The code checks if a tag is provided via GET or POST methods. It validates the tag length and content, then redirects
-to a URL with the tag if it meets the criteria. The tag prefix and style are adjusted based on validation results.
 <?php
-    $prefix = "#";
-    $style = "";
+    //sql-local
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "personalitylib";
+    
+    //sql-server
+    // $servername = "mysql10.manitu.net";
+    // $username = "u100110";
+    // $password = "ShJ6nHfvrWFyr9Nu";
+    // $dbname = "db100110";
+
+    $value = "PersoTag";
     if (isset($_GET['tag'])) {
-        $tag = $_GET["tag"];
+        $tag = $_GET["tag"];    
+        
+        // Create connection
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+        // Check connection
+        if (!$conn) {
+            $url = "https://error.personalitylib.com/500/?error=sql";
+            header("Location: $url");
+            exit;
+        }
+
+        // Define the SQL query
+        $sql = "SELECT * FROM tagdata WHERE tag = '$tag' LIMIT 1";
+        $result = mysqli_query($conn, $sql);
+
+        // Check if any rows are returned (meaning the tag exists)
+        if (mysqli_num_rows($result) > 0) {
+            $url = "personality/?tag=" . $tag;
+            header("Location: $url");
+            exit;
+        } else {
+            $url = "https://error.personalitylib.com/500/?error=persotag&tag=" . $tag;
+            header("Location: $url");
+            exit;
+        }
     }else{
         if (!isset($_POST["tag"]) || empty($_POST["tag"])) {
-            $prefix = "#"; // Empty tag
-            $style = "";
+            $value = "PersoTag";
         } else if (!ctype_digit($_POST["tag"])) {
-            $prefix = "has to be just numbers"; // Not only digits
-            $style = "color:red;";
+            $value = "The Tag can only contain Numbers";
         } else {
             $length = strlen($_POST["tag"]);
             if ($length < 6) {
-                $prefix = "too short"; // Less than 6 digits
-                $style = "color:red;";
+                $value = "The Tag is too short";
             } else if ($length > 6) {
-                $prefix = "too long"; // More than 6 digits
-                $style = "color:red;";
+                $value = "The Tag is too long";
             } else{
-                $style = "";
-                $url = "personality?tag=" . urlencode($_POST["tag"]);
+                $url = "?tag=" . urlencode($_POST["tag"]);
                 header("Location: $url");
                 exit;
             }
@@ -79,6 +108,25 @@ to a URL with the tag if it meets the criteria. The tag prefix and style are adj
                 <button type="button" class="btn btn-outline-primary" onclick="window.location.href='./about'">
                     About
                 </button>
+                <!-- Modal -->
+                <div class="modal fade" id="betaModal" tabindex="-1" aria-labelledby="betaModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="betaModalLabel">Open Beta</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                This website is still under construction and is in an open beta
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -87,48 +135,48 @@ to a URL with the tag if it meets the criteria. The tag prefix and style are adj
             <nav class="navbar bg-body-tertiary">
                 <form class="container-fluid" action="index.php" method="POST">
                     <div class="input-group">
-
-                        <?php 
-                        echo '<label for="tag" class="input-group-text" id="basic-addon1" style="'.$style.'">'.$prefix.'</label>';
-                        ?>
-                        <input type="text" id="tag" class="form-control" placeholder="PersoTag" aria-label="PersoTag"
-                            name="tag" aria-describedby="basic-addon1" />
+                        <label for="tag" class="input-group-text" id="basic-addon1">#</label>
+                        <input type="text" id="tag" class="form-control" placeholder="<?php echo $value;?>"
+                            aria-label="PersoTag" name="tag" aria-describedby="basic-addon1" />
 
                     </div>
                     <div class="submit-div">
                         <div class="button-submit-div">
                             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                <input type="submit" value="Send" class="input-button btn btn-outline-primary"></input>
+                                <input type="submit" value="Send" class="input-button btn btn-outline-primary"
+                                    style="border-top-right-radius:0; border-bottom-right-radius:0"></input>
                                 <button type="button" class="input-button btn btn-outline-primary"
-                                    data-bs-toggle="modal" data-bs-target="#betaModal">
-                                    Help
+                                    data-bs-toggle="modal" data-bs-target="#Help"
+                                    style="border-top-left-radius:0; border-bottom-left-radius:0">
+                                    What is a PersoTag
                                     <!--TODO: Make Help Modal-->
                                 </button>
-
-                            </div>
-                            <!-- Modal -->
-                            <div class="modal fade" id="betaModal" tabindex="-1" aria-labelledby="betaModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="betaModalLabel">
-                                                Open Beta
-                                            </h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            This website is still under construction and is in an open
-                                            beta
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
-                                                Close
-                                            </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="Help" data-bs-backdrop="static" data-bs-keyboard="false"
+                                    tabindex="-1" aria-labelledby="HelpLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="HelpLabel">Modal title</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                A PersoTag is a unique tag ID that you get when you create your own
+                                                entry in the Personality Library. With a PersoTag, you can find other
+                                                people's entries or let yourself be found by, for example, adding it to
+                                                the bio of another social media platform.
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Get your own Tag</button>
+                                                <!--TODO: GoTo SignIn-->
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Modal End-->
                             </div>
                         </div>
                     </div>

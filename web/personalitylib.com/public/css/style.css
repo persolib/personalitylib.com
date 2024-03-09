@@ -12026,11 +12026,10 @@ header .link-tree button {
   background-color: none;
   border-color: whitesmoke;
   color: white;
-  width: 90px;
+  width: auto;
   transition: 0.4s;
 }
 header .link-tree button:hover {
-  width: 110px;
   border-color: #000;
   color: black;
   background-color: #fff;
@@ -12092,6 +12091,14 @@ footer h1, footer .h1 {
     width: 90%;
   }
 }
+@media screen and (max-width: 800px) {
+  .accordion-none {
+    display: none;
+  }
+  .list-group {
+    display: none;
+  }
+}
 @media screen and (max-width: 700px) {
   footer .footer-p,
   footer .media-uvis {
@@ -12116,12 +12123,11 @@ footer h1, footer .h1 {
   align-items: center;
 }
 .input-div nav {
-  font-family: "Share Tech", sans-serif;
   border-radius: 6px;
+  font-family: "Share Tech", sans-serif;
   width: 60%;
   height: auto;
   color: white;
-  font-size: 30pt;
 }
 .input-div nav .input-group input:focus {
   width: 70%;
@@ -12142,18 +12148,21 @@ footer h1, footer .h1 {
   align-items: center;
 }
 .input-div nav .submit-div .button-submit-div .input-button {
+  border-radius: 6px;
   background-color: none;
   border-color: black;
   color: black;
-  width: 90px;
+  width: auto;
   transition: 0.4s;
 }
 .input-div nav .submit-div .button-submit-div .input-button:hover {
-  width: 110px;
   border-color: whitesmoke;
   color: white;
   background-color: #000;
   border-style: dashed;
+}
+.input-div nav .submit-div .button-submit-div .modal {
+  color: black;
 }
 
 .submit {

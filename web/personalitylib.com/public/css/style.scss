@@ -9,13 +9,11 @@
   @include displayflex();
 
   nav {
-    
+    border-radius: 6px; 
     font-family: "Share Tech", sans-serif;
-    border-radius: 6px;
     width: 60%;
     height: auto;
     color: $text;
-    font-size: $input;
     .input-group {
       input {
   
@@ -36,7 +34,9 @@
         width: 50%;
         @include displayflex($a: left); 
         .input-button {@include input-button-groupe();}
-
+        .modal {
+          color: $text-background;
+        }
       }
     }
     

@@ -4,5 +4,13 @@
 @include html(); 
 @include media();
 
-
+main {
+    .progress-div {
+        .progress-wrapper {
+            .progress {
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
 
