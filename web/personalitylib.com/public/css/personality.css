@@ -12116,6 +12116,9 @@ footer h1, footer .h1 {
     display: none;
   }
 }
-main .progress-div .progress-wrapper .progress {
+body {
+  justify-content: unset;
+}
+body main .progress-div .progress-wrapper .progress {
   margin-bottom: 5px;
 }/*# sourceMappingURL=personality.css.map */

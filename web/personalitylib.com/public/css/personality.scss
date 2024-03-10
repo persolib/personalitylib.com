@@ -4,6 +4,10 @@
 @include html(); 
 @include media();
 
+body {
+
+    justify-content: unset;
+
 main {
     .progress-div {
         .progress-wrapper {
@@ -13,4 +17,4 @@ main {
         }
     }
 }
-
+}

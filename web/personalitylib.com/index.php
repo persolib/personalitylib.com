@@ -3,7 +3,7 @@
     // $servername = "localhost";
     // $username = "root";
     // $password = "";
-    // $dbname = "personalitylib";
+    // $dbname = "db100110";
     
     //sql-server
     $servername = "mysql10.manitu.net";
