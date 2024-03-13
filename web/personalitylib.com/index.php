@@ -1,22 +1,12 @@
 <?php
-    //sql-local
-    // $servername = "localhost";
-    // $username = "root";
-    // $password = "";
-    // $dbname = "db100110";
-    
-    //sql-server
-    $servername = "mysql10.manitu.net";
-    $username = "u100110";
-    $password = "ShJ6nHfvrWFyr9Nu";
-    $dbname = "db100110";
+    require_once './conf.php';
 
     $value = "PersoTag";
     if (isset($_GET['tag'])) {
         $tag = $_GET["tag"];    
         
         // Create connection
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
         // Check connection
         if (!$conn) {
@@ -97,8 +87,7 @@
                 Home
             </button>
             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                    data-bs-target="#betaModal">
+                <button type="button" class="btn btn-outline-primary" onclick="window.location.href='./auth'">
                     LogIn
                 </button>
                 <button type="button" class="btn btn-outline-primary create" data-bs-toggle="modal"
@@ -108,26 +97,8 @@
                 <button type="button" class="btn btn-outline-primary" onclick="window.location.href='./about'">
                     About
                 </button>
-                <!-- Modal -->
-                <div class="modal fade" id="betaModal" tabindex="-1" aria-labelledby="betaModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="betaModalLabel">Open Beta</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                This website is still under construction and is in an open beta
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
+        </div>
         </div>
     </header>
     <main>
@@ -149,7 +120,6 @@
                                     data-bs-toggle="modal" data-bs-target="#Help"
                                     style="border-top-left-radius:0; border-bottom-left-radius:0">
                                     What is a PersoTag
-                                    <!--TODO: Make Help Modal-->
                                 </button>
                                 <!-- Modal -->
                                 <div class="modal fade" id="Help" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -208,7 +178,6 @@
                 </span>
             </span>
         </span>
-        <h1>by JustWait</h1>
         <span class="footer-span">
             <p>© 2024 PersonalityLib</p>
         </span>

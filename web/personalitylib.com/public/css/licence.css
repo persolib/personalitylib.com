@@ -11988,7 +11988,7 @@ body {
   align-items: center;
   height: 100%;
   position: relative;
-  background-color: black;
+  background-image: repeating-linear-gradient(0deg, hsla(202, 0%, 65%, 0.08) 0px, hsla(202, 0%, 65%, 0.08) 1px, transparent 1px, transparent 11px), repeating-linear-gradient(90deg, hsla(202, 0%, 65%, 0.08) 0px, hsla(202, 0%, 65%, 0.08) 1px, transparent 1px, transparent 11px), linear-gradient(90deg, #000, #000);
   overflow: hidden;
 }
 body a {
@@ -12004,7 +12004,6 @@ footer {
 main {
   align-items: center;
   width: 100%;
-  background-color: black;
   max-height: 79%;
   /* Set the maximum height of the main section */
   overflow: hidden;
@@ -12016,7 +12015,6 @@ main {
 header {
   width: 100%;
   height: 10%;
-  background-color: black;
   top: 0;
 }
 header .link-tree {
@@ -12057,7 +12055,6 @@ footer {
   align-items: center;
   width: 100%;
   height: 10%;
-  background-color: black;
   bottom: 0;
 }
 footer span {

@@ -6,6 +6,7 @@
  */
 @import url("https://fonts.googleapis.com/css2?family=Share+Tech&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 :root,
 [data-bs-theme=light] {
   --bs-blue: #0d6efd;
@@ -12113,12 +12114,198 @@ footer h1, footer .h1 {
     display: none;
   }
 }
-.legal-card {
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: repeating-linear-gradient(0deg, hsla(202, 0%, 65%, 0.08) 0px, hsla(202, 0%, 65%, 0.08) 1px, transparent 1px, transparent 11px), repeating-linear-gradient(90deg, hsla(202, 0%, 65%, 0.08) 0px, hsla(202, 0%, 65%, 0.08) 1px, transparent 1px, transparent 11px), linear-gradient(90deg, rgb(20, 20, 20), rgb(20, 20, 20));
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+  margin: -20px 0 50px;
+}
+body main h1, body main .h1 {
+  font-weight: bold;
+  margin: 0;
+}
+body main h2, body main .h2 {
+  text-align: center;
+}
+body main p {
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  margin: 20px 0 30px;
+}
+body main span {
+  font-size: 12px;
+}
+body main a {
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 15px 0;
+}
+body main button {
+  border-radius: 20px;
+  border: 1px solid #0d6efd;
+  background-color: #0d6efd;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+}
+body main button:active {
+  transform: scale(0.95);
+}
+body main button:focus {
+  outline: none;
+}
+body main button.ghost {
+  background-color: transparent;
+  border-color: #fff;
+}
+body main form {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: center;
+}
+body main .fab {
+  width: auto;
+  height: auto;
+}
+body main input {
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
   width: 100%;
 }
-.legal-card .card {
-  width: 80%;
-}/*# sourceMappingURL=legalnotice.css.map */
+body main .container {
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 480px;
+}
+body main .form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+}
+body main .sign-in-container {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+body main .container.right-panel-active .sign-in-container {
+  transform: translateX(100%);
+}
+body main .sign-up-container {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+body main .container.right-panel-active .sign-up-container {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: show 0.6s;
+}
+@keyframes show {
+  0%, 49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50%, 100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+body main .overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+body main .container.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+}
+body main .overlay {
+  background: #000;
+  background: linear-gradient(to right, #0d6efd, #000);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  color: #fff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+body main .container.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+body main .overlay-panel {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+body main .overlay-left {
+  transform: translateX(-20%);
+}
+body main .container.right-panel-active .overlay-left {
+  transform: translateX(0);
+}
+body main .overlay-right {
+  right: 0;
+  transform: translateX(0);
+}
+body main .container.right-panel-active .overlay-right {
+  transform: translateX(20%);
+}
+body main .social-container {
+  margin: 20px 0;
+}
+body main .social-container a {
+  border: 1px solid #fff;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  height: 40px;
+  width: 40px;
+}/*# sourceMappingURL=auth.css.map */

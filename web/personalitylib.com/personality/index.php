@@ -1,15 +1,15 @@
 <?php
     //sql-local
-    // $servername = "localhost";
-    // $sql_username = "root";
-    // $password = "";
-    // $dbname = "db100110";
+    $servername = "localhost";
+    $sql_username = "root";
+    $password = "";
+    $dbname = "db100110";
     
     //sql-server
-    $servername = "mysql10.manitu.net";
-    $sql_username = "u100110";
-    $password = "ShJ6nHfvrWFyr9Nu";
-    $dbname = "db100110";
+    // $servername = "mysql10.manitu.net";
+    // $sql_username = "u100110";
+    // $password = "ShJ6nHfvrWFyr9Nu";
+    // $dbname = "db100110";
     
     if (isset($_GET['tag'])) {
         // Create connection
@@ -105,8 +105,7 @@
                 Home
             </button>
             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                    data-bs-target="#betaModal">
+                <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../auth/'">
                     LogIn
                 </button>
                 <button type="button" class="btn btn-outline-primary create" data-bs-toggle="modal"
@@ -116,25 +115,6 @@
                 <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../about/'">
                     About
                 </button>
-                <!-- Modal -->
-                <div class="modal fade" id="betaModal" tabindex="-1" aria-labelledby="betaModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="betaModalLabel">Open Beta</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                This website is still under construction and is in an open beta
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </header>
@@ -496,7 +476,6 @@
                 </span>
             </span>
         </span>
-        <h1>by JustWait</h1>
         <span class="footer-span">
             <p>© 2024 PersonalityLib</p>
         </span>

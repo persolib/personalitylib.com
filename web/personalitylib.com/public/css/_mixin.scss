@@ -64,7 +64,21 @@
     @include displayflex();
     height: 100%;
     position: relative;
-    background-color: $main;
+    background-image: repeating-linear-gradient(
+      0deg,
+      hsla(202, 0%, 65%, 0.08) 0px,
+      hsla(202, 0%, 65%, 0.08) 1px,
+      transparent 1px,
+      transparent 11px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      hsla(202, 0%, 65%, 0.08) 0px,
+      hsla(202, 0%, 65%, 0.08) 1px,
+      transparent 1px,
+      transparent 11px
+    ),
+    linear-gradient(90deg, $black, $black);
     overflow: hidden;
 
     a {
@@ -81,7 +95,6 @@
   main {
     align-items: center;
     width: 100%;
-    background-color: $main;
     max-height: 79%;
     /* Set the maximum height of the main section */
     overflow: hidden;
@@ -94,7 +107,6 @@
     //@include displayflex($a: space-between);modal
     width: 100%;
     height: 10%;
-    background-color: $main;
     top: 0;
 
     .link-tree {
@@ -129,7 +141,6 @@
     @include displayflex($a: space-between);
     width: 100%;
     height: 10%;
-    background-color: $main;
     bottom: 0;
 
     span {

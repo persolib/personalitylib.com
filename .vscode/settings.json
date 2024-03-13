@@ -35,7 +35,9 @@
         "web\\personalitylib.com\\public\\css\\about.css": true,
         "web\\personalitylib.com\\public\\css\\about.css.map": true,
         "web\\personalitylib.com\\public\\css\\personality.css.map": true,
-        "web\\personalitylib.com\\public\\css\\personality.css": true
+        "web\\personalitylib.com\\public\\css\\personality.css": true,
+        "web\\personalitylib.com\\public\\css\\auth.css": true,
+        "web\\personalitylib.com\\public\\css\\auth.css.map": true
     },
     "liveServer.settings.port": 5502,
 "docwriter.style": "Auto-detect",
