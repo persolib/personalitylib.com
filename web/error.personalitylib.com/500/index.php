@@ -1,5 +1,6 @@
 <?php
 if (isset($_GET['error'])) {
+	$back = "";
 	$error = $_GET["error"];  
 	if ($error == "userid") {
 		if (isset($_GET['id'])) {
@@ -17,6 +18,14 @@ if (isset($_GET['error'])) {
 		$msg = "The PersoTag ".$tag." was not found in our Database.";
 	} else if (($error == "sql")) {
 		$msg = "Can't connect to SQL Server.";
+	} else {
+		$msg = "There was an unknown Error.";
+	}
+} else if (isset($_GET['msg'])) {
+	$error = $_GET["msg"];
+	if ($error == "1") {
+		$msg = "There was an error with your Form.";
+		$back = "profile/new";
 	} else {
 		$msg = "There was an unknown Error.";
 	}
@@ -378,7 +387,7 @@ if (isset($_GET['error'])) {
             <?php
             	echo "<h1>$msg</h1>";
 			?>
-            <h2><a style="color: #274c5e;" href="https://personalitylib.com/">Go back</a></h2>
+            <h2><a style="color: #274c5e;" href="https://personalitylib.com/<?php echo $back; ?>">Go back</a></h2>
     </div>
 
 </body>

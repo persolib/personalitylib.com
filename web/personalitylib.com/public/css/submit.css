@@ -12113,12 +12113,17 @@ footer h1, footer .h1 {
     display: none;
   }
 }
-.legal-card {
+main .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
 }
-.legal-card .card {
-  width: 80%;
-}/*# sourceMappingURL=legalnotice.css.map */
+main .card {
+  width: 60%;
+}
+main .preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+}/*# sourceMappingURL=submit.css.map */

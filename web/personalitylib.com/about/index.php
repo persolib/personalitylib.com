@@ -41,7 +41,8 @@
                 Home
             </button>
             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../auth/'">
+                <button type="button" class="btn btn-outline-primary"
+                    onclick="window.location.href='../auth/?back=about'">
                     LogIn
                 </button>
                 <button type="button" class="btn btn-outline-primary create" data-bs-toggle="modal"

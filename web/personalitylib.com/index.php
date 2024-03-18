@@ -87,11 +87,13 @@
                 Home
             </button>
             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <button type="button" class="btn btn-outline-primary" onclick="window.location.href='./auth'">
+                <!--TODO: if allready signed in: link to Profile-->
+                <button type="button" class="btn btn-outline-primary"
+                    onclick="window.location.href='./auth/?back=home'">
                     LogIn
                 </button>
-                <button type="button" class="btn btn-outline-primary create" data-bs-toggle="modal"
-                    data-bs-target="#betaModal">
+                <!--TODO: if allready signed in: link to Personality (profile/new/submit.php?id=)-->
+                <button type="button" class="btn btn-outline-primary" onclick="window.location.href='./profile/new'">
                     Create
                 </button>
                 <button type="button" class="btn btn-outline-primary" onclick="window.location.href='./about'">
@@ -140,8 +142,9 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Get your own Tag</button>
-                                                <!--TODO: GoTo SignIn-->
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="window.location.href='./profile/new'">Get your own
+                                                    Tag</button>
                                             </div>
                                         </div>
                                     </div>

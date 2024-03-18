@@ -1,5 +1,11 @@
 <?php
-header("Location: ./auth");
+if (isset($_GET['back'])) {
+    $back = "?back=".$_GET['back']; 
+} else {
+    $back = "";
+}
+
+header("Location: ./auth/$back");
 exit;
 ?>
 <!DOCTYPE html>

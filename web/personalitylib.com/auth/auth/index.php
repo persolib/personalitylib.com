@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--TODO: CHeck if allready signed in-->
 
 <head>
     <meta charset="UTF-8">

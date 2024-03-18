@@ -1,0 +1,20 @@
+//all import
+@import "./import";
+
+@include html(); 
+@include media();
+
+main {
+    .wrapper {
+        @include displayflex();
+    }
+
+    .card {
+        width: 60%;
+    }
+
+    .preview {
+        @include displayflex();
+        padding-left: 10px;
+    }
+}

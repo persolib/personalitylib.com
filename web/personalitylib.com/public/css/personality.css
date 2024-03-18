@@ -11988,7 +11988,7 @@ body {
   align-items: center;
   height: 100%;
   position: relative;
-  background-image: repeating-linear-gradient(0deg, hsla(202, 0%, 65%, 0.08) 0px, hsla(202, 0%, 65%, 0.08) 1px, transparent 1px, transparent 11px), repeating-linear-gradient(90deg, hsla(202, 0%, 65%, 0.08) 0px, hsla(202, 0%, 65%, 0.08) 1px, transparent 1px, transparent 11px), linear-gradient(90deg, #000, #000);
+  background-image: repeating-linear-gradient(0deg, hsla(202, 0%, 65%, 0.08) 0px, hsla(202, 0%, 65%, 0.08) 1px, transparent 1px, transparent 11px), repeating-linear-gradient(90deg, hsla(202, 0%, 65%, 0.08) 0px, hsla(202, 0%, 65%, 0.08) 1px, transparent 1px, transparent 11px), linear-gradient(90deg, rgb(20, 20, 20), rgb(20, 20, 20));
   overflow: hidden;
 }
 body a {

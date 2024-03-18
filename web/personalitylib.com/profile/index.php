@@ -1,3 +1,58 @@
+<?php
+    session_start();
+    require_once '../conf.php';
+    
+    if (isset($_GET['id']) or isset($_SESSION['user_id'])) {
+        if (isset($_GET['id'])) {
+            $user_id = $_GET["id"]; 
+        } else if ( isset($_SESSION['user_id'])) {
+            $user_id = $_SESSION['user_id']; 
+            unset($_SESSION['user_id']);
+            $url = "?id=$user_id";
+            header("Location: $url");
+            exit;
+        }
+        
+        // Create connection
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+
+        // Check connection
+        if (!$conn) {
+            $url = "https://error.personalitylib.com/500/?error=sql";
+            header("Location: $url");
+            exit;
+        }
+        
+        
+        // Define the SQL query
+        $sql = "SELECT * FROM userdata WHERE user_id = '$user_id' LIMIT 1";
+
+        $result = mysqli_query($conn, $sql);
+
+        // Check if any rows are returned (meaning the tag exists)
+        if (mysqli_num_rows($result) > 0) {
+            $_SESSION['user_id'] = $user_id;
+            while($row = $result->fetch_assoc()) {
+                $name = $row["name"];
+                $username = $row["username"];
+                $join = $row["data_join"];
+                $birth = $row["birthdate"];
+                }
+        } else {
+            $url = "../auth/?back=profile";
+            header("Location: $url");
+            exit;
+        }
+
+        mysqli_close($conn);
+    }else{
+        //TODO: or check if allready signed in
+        $url = "../auth/?back=profile";
+        header("Location: $url");
+        exit;
+    }
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,9 +72,9 @@
     <script src="../public/bootstrap/bootstrap.bundle.js"></script>
     <!-- FAVICON -->
     <link rel="shortcut icon" href="../public/favicon.ico" type="image/x-icon">
-    <title>Licence</title>
-    <meta name="title" content="Licence" />
-    <link rel="stylesheet" href="../public/css/licence.css" />
+    <?php echo"<title>$username - Account</title>" ?>
+    <?php echo "<meta name='title' content='".$username." - Account'/>" ?>
+    <link rel="stylesheet" href="../public/css/profile.css" />
     <!--Google Ads-->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4168649657374641"
         crossorigin="anonymous"></script>
@@ -31,8 +86,7 @@
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb p-2">
                 <li class="breadcrumb-item"><a href="https://personalitylib.com">Home</a></li>
-                <li class="breadcrumb-item"><a href="https://personalitylib.com/legalnotice">Legal Notice</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Licence</li>
+                <?php echo"<li class='breadcrumb-item active' aria-current='page'>$username</li>" ?>
             </ol>
         </nav>
 
@@ -43,7 +97,7 @@
             </button>
             <div class="btn-group" role="group" aria-label="Basic outlined example">
                 <button type="button" class="btn btn-outline-primary"
-                    onclick="window.location.href='../auth/?back=licence'">
+                    onclick="window.location.href='../auth/?back=profile'">
                     LogIn
                 </button>
                 <button type="button" class="btn btn-outline-primary create" data-bs-toggle="modal"
@@ -56,43 +110,14 @@
             </div>
         </div>
     </header>
-    <main class="z-0">
-        <div class="licence-card">
-            <div class="card text-center">
-                <div class="card-header">
-                    MIT License
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Copyright (c) 2024 Just Wait</h5>
-                    <p class="card-text">
-                        Permission is hereby granted, free of charge, to any person obtaining a copy
-                        of this software and associated documentation files (the "Software"), to deal
-                        in the Software without restriction, including without limitation the rights
-                        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-                        copies of the Software, and to permit persons to whom the Software is
-                        furnished to do so, subject to the following conditions:
+    <main>
+        <?php
+            echo "<p style='color:white; display: flex; justify-content: center; text-allign: center;'>Username: " . $username . "<br>Userid: " . $user_id . "<br>Join: " . $join . "<br>Name: " . $name . "<br>Birth: " . $birth . "</p>";
+        ?>
 
-                        The above copyright notice and this permission notice shall be included in all
-                        copies or substantial portions of the Software.
-
-                        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-                        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-                        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-                        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-                        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-                        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-                        SOFTWARE.
-                    </p>
-                    <a href="https://github.com/persolib/personalitylib.com" class="btn btn-primary">Github</a>
-                </div>
-                <div class="card-footer text-body-secondary">
-                    2024
-                </div>
-            </div>
-        </div>
     </main>
-    <footer class="z-1">
-        <span class="">
+    <footer>
+        <span>
             <p>Links:</p>
             <span class="hstack gap-4 media-uvis">
                 <p class="p-2"><a href="../about/">About</a></p>

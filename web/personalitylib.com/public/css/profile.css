@@ -12112,13 +12112,4 @@ footer h1, footer .h1 {
   header .link-tree {
     display: none;
   }
-}
-.legal-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-.legal-card .card {
-  width: 80%;
-}/*# sourceMappingURL=legalnotice.css.map */
+}/*# sourceMappingURL=profile.css.map */
