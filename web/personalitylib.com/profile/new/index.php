@@ -287,7 +287,7 @@
                 </div>
             </form>
         </div>
-        <script src="../../public/js/new.js"></script>
+        <script src="../../public/js/form.js"></script>
     </main>
     <footer>
         <span>

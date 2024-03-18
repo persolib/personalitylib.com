@@ -26,6 +26,9 @@ if (isset($_GET['error'])) {
 	if ($error == "1") {
 		$msg = "There was an error with your Form.";
 		$back = "profile/new";
+	} else if ($error == "2") {
+		$msg = "There is already an account associated with this Email.";
+		$back = "auth";
 	} else {
 		$msg = "There was an unknown Error.";
 	}

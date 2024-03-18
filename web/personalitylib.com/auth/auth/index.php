@@ -30,7 +30,7 @@
     <main>
         <div class="container" id="container">
             <div class="form-container sign-up-container">
-                <form action="#">
+                <form class="needs-validation" action="signup.php" method="post" novalidate>
                     <h1>Create Account</h1>
                     <div class="social-container">
                         <a href="#" class="social"><i class="icon snapchat">
@@ -59,14 +59,16 @@
                             </i></a>
                     </div>
                     <span>or use your email for registration</span>
-                    <input type="text" placeholder="Name" />
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
-                    <button>Sign Up</button>
+                    <input type="text" class="form-control" minlength="4" maxlength="20" name="name" id="name"
+                        placeholder="Name" required />
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" required />
+                    <input type="password" class="form-control password" minlength="8" maxlength="30" name="password"
+                        id="password" placeholder="Password" required />
+                    <button type="submit">Sign Up</button>
                 </form>
             </div>
             <div class="form-container sign-in-container">
-                <form action="#">
+                <form class="needs-validation" action="signin.php" method="post" novalidate>
                     <h1>Sign in</h1>
                     <div class="social-container">
                         <a href="#" class="social"><i class="icon snapchat">
@@ -95,10 +97,10 @@
                             </i></a>
                     </div>
                     <span>or use your account</span>
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
-                    <a href="#">Forgot your password?</a>
-                    <button>Sign In</button>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" required />
+                    <input type="password" class="form-control" minlength="8" name="password" id="password"
+                        placeholder="Password" required />
+                    <button type="submit">Sign Up</button>
                 </form>
             </div>
             <div class="overlay-container">
@@ -116,6 +118,7 @@
                 </div>
             </div>
         </div>
+        <script src=".././../public/js/form.js"></script>
     </main>
     <footer>
         <span class="">

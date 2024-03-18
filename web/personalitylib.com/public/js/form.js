@@ -1,3 +1,6 @@
+/* This code snippet is an Immediately Invoked Function Expression (IIFE) written in JavaScript. It is
+used to apply custom Bootstrap validation styles to forms on a webpage. Here's a breakdown of what
+it does: */
 (() => {
     'use strict'
   
