@@ -109,6 +109,10 @@ if (isset($_GET['id'])) {
                                 }
                             ?>
                             </p>
+                            <div class="alert alert-warning" role="alert">
+                                The Signup Engin isn't ready yet!
+                            </div>
+                            <p class="card-text"><small class="text-body-secondary"><a href="../..">Go back</a></small>
                             </p>
                         </div>
                     </div>
