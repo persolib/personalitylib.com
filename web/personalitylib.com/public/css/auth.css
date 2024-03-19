@@ -12199,6 +12199,19 @@ body main .container {
   max-width: 100%;
   min-height: 480px;
 }
+body main .error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
 body main .form-container {
   position: absolute;
   top: 0;
