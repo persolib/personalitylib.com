@@ -19,27 +19,24 @@
 
     // Signup Engine
     if (isset($_POST["signup"])) {
-        //$password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+        $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
         $password = $_POST["password"];
         $email = $_POST["email"];
         $name = $_POST["name"];
         
         // Function to validate password strength
         function validatePassword($password) {
-            // Given password
-            // $password = 'user-input-pass';
+            // Validate password strength
+            $uppercase = preg_match('@[A-Z]@', $password);
+            $lowercase = preg_match('@[a-z]@', $password);
+            $number    = preg_match('@[0-9]@', $password);
+            $specialChars = preg_match('@[^\w]@', $password);
 
-            // // Validate password strength
-            // $uppercase = preg_match('@[A-Z]@', $password);
-            // $lowercase = preg_match('@[a-z]@', $password);
-            // $number    = preg_match('@[0-9]@', $password);
-            // $specialChars = preg_match('@[^\w]@', $password);
-
-            // if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
-            //     echo 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
-            // }else{
-            //     echo 'Strong password.';
-            // }
+            if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
+                return false;
+            }else{
+                return true;
+            }
         }
     
         // Function to validate email address
@@ -101,6 +98,13 @@
         $result = $conn->query($sql);
         if (!mysqli_num_rows($result) > 0) {
             $_SESSION['user_id'] = $user_id;
+            $_SESSION['password_hash'] = $password_hash;
+            $_SESSION['email'] = $email; 
+            $_SESSION['name'] = $name;
+
+            $url = "../data";
+            header("Location: $url");
+            exit;
         } else {
             $url = "?error=1";
             header("Location: $url");
@@ -125,7 +129,7 @@
     <meta name="revisit-after" content="2 days" />
     <meta name="author" content="JustWait" />
     <!-- BOOTTSTRAP -->
-    <script src="../public/bootstrap/bootstrap.bundle.js"></script>
+    <script src="../../public/bootstrap/bootstrap.bundle.js"></script>
     <!-- FAVICON -->
     <link rel="shortcut icon" href="../../public/favicon.ico" type="image/x-icon">
     <title>Auth</title>
