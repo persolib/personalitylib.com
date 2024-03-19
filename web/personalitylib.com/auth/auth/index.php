@@ -1,4 +1,10 @@
 <?php
+    if (isset($_GET['back'])) {
+        $back = $_GET['back']; 
+    } else {
+        $back = "..";
+    }
+
     session_start();
     require_once '../../conf.php';
 
@@ -12,9 +18,59 @@
         exit;
     }
 
+    if (isset($_COOKIE["email"], $_COOKIE["password"])) {
+        $email = $_COOKIE["email"];
+        $password = $_COOKIE["password"];
+
+        $sql = "SELECT * FROM userlogin WHERE email='$email'";
+		$result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) === 1) {
+			$row = mysqli_fetch_assoc($result);
+            $hashed_password = $row["password_hash"];
+            if ($row['email'] === $email && password_verify($password, $hashed_password)) {
+                $_SESSION['user_id'] = $row['userid'];
+            	header("Location: ../../$back");
+		        exit();
+            }else{
+				$url = "?error=5";
+                header("Location: $url");
+                exit;
+			}
+		}else{
+			$url = "?error=5";
+            header("Location: $url");
+            exit;
+		}
+    }
+
     // Signin Engine
     if (isset($_POST["signin"])) {
-        die;
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+
+        $sql = "SELECT * FROM userlogin WHERE email='$email'";
+		$result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) === 1) {
+			$row = mysqli_fetch_assoc($result);
+            $hashed_password = $row["password_hash"];
+            if ($row['email'] === $email && password_verify($password, $hashed_password)) {
+                $_SESSION['user_id'] = $row['userid'];
+                if (isset($_POST["check"])) {
+                    setcookie("email", $email, time() + (365 * 24 * 60 * 60), "/");
+                    setcookie("password", $password, time() + (365 * 24 * 60 * 60), "/");
+                }
+            	header("Location: ../..");
+		        exit();
+            }else{
+				$url = "?error=6";
+                header("Location: $url");
+                exit;
+			}
+		}else{
+			$url = "?error=6";
+            header("Location: $url");
+            exit;
+		}
     }
 
     // Signup Engine
@@ -114,7 +170,6 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<!--TODO: CHeck if allready signed in-->
 
 <head>
     <meta charset="UTF-8">
@@ -154,6 +209,8 @@
                     echo "Your name can only contain letters.";
                 } else if   ($_GET["error"] == 5) {
                     echo "Please fill out the form";
+                } else if   ($_GET["error"] == 6) {
+                    echo "Incorect Email or Password";
                 } else {
                     echo "There was an error with this form! ";
                 }
@@ -162,7 +219,7 @@
             <?php } ?>
             <div class="container" id="container">
                 <div class="form-container sign-up-container">
-                    <form class="needs-validation" action="index.php" method="post" novalidate>
+                    <form class="needs-validation" action="." method="post" novalidate>
                         <h1>Create Account</h1>
                         <div class="social-container">
                             <a href="#" class="social"><i class="icon snapchat">
@@ -200,7 +257,7 @@
                     </form>
                 </div>
                 <div class="form-container sign-in-container">
-                    <form class="needs-validation" action="index.php" method="post" novalidate>
+                    <form class="needs-validation" action="." method="post" novalidate>
                         <h1>Sign in</h1>
                         <div class="social-container">
                             <a href="#" class="social"><i class="icon snapchat">

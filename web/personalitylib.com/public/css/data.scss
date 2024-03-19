@@ -1,0 +1,35 @@
+//all import
+@import "./import";
+
+@include html(); 
+@include media();
+
+main {
+        @include displayflex();
+
+    .card {
+        width: 60%;
+
+        img {
+            padding: 20px;
+        }
+    }
+
+    .preview {
+        @include displayflex();
+        padding-left: 10px;
+    }
+
+    .error {
+        @include displayflex();
+        position: relative;
+        overflow: hidden;
+        width: 768px;
+        max-width: 100%;
+        padding-right: calc(var(--bs-gutter-x)* 0.5);
+        padding-left: calc(var(--bs-gutter-x)* 0.5);
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+} 

@@ -1,58 +1,72 @@
-<?php
-    require_once '../conf.php';
-    
-    if (isset($_GET['tag'])) {
-        // Create connection
-        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-
-        // Check connection
-        if (!$conn) {
-            $url = "https://error.personalitylib.com/500/?error=sql";
-            header("Location: $url");
-            exit;
-        }
-        
-        $tag = $_GET["tag"]; 
-        
-        // Define the SQL query
-        $sql = "SELECT * FROM tagdata WHERE tag = '$tag' LIMIT 1";
-
-        $result = mysqli_query($conn, $sql);
-
-        // Check if any rows are returned (meaning the tag exists)
-        if (mysqli_num_rows($result) > 0) {
-        while($row = $result->fetch_assoc()) {
-            $userid = $row["user_id"];
-            }
-        $sql = "SELECT * FROM userdata WHERE user_id = '$userid' LIMIT 1";
-        $result = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result) > 0) {
-            session_start();
-            $_SESSION['user_id'] = $userid;
-            while($row = $result->fetch_assoc()) {
-                $name = $row["name"];
-                $username = $row["username"];
-                $join = $row["data_join"];
-                $birth = $row["birthdate"];
-                }
-        } else {
-            $url = "https://error.personalitylib.com/500/?error=userid&id=" . $userid;
-            header("Location: $url");
-            exit;
-        }
-        } else {
-        $url = "https://error.personalitylib.com/500/?error=persotag&tag=" . $tag;
+<?php //TODO: make changeble
+session_start();
+if (isset($_SESSION['user_id'])) {
+    $logged = true;
+    $user_id = $_SESSION['user_id'];
+} else {
+    if (isset($_COOKIE['email'], $_COOKIE['password'])) {
+        $url = "../auth?back=personality";
         header("Location: $url");
         exit;
-        }
-
-        mysqli_close($conn);
-    }else{
-        $url = "..";
-        header("Location: $url");
-        exit;
+    } else {
+        $logged = false;
     }
-    
+}
+
+require_once '../conf.php';
+
+if (isset($_GET['tag'])) {
+// Create connection
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+
+// Check connection
+if (!$conn) {
+$url = "https://error.personalitylib.com/500/?error=sql";
+header("Location: $url");
+exit;
+}
+
+$tag = $_GET["tag"];
+
+// Define the SQL query
+$sql = "SELECT * FROM tagdata WHERE tag = '$tag' LIMIT 1";
+
+$result = mysqli_query($conn, $sql);
+
+// Check if any rows are returned (meaning the tag exists)
+if (mysqli_num_rows($result) > 0) {
+while($row = $result->fetch_assoc()) {
+$userid = $row["user_id"];
+}
+$sql = "SELECT * FROM userdata WHERE user_id = '$userid' LIMIT 1";
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
+session_start();
+$_SESSION['user_id'] = $userid;
+while($row = $result->fetch_assoc()) {
+$name = $row["name"];
+$username = $row["username"];
+$join = $row["data_join"];
+$birth = $row["birthdate"];
+}
+} else {
+$url = "https://error.personalitylib.com/500/?error=userid&id=" . $userid;
+header("Location: $url");
+exit;
+}
+} else {
+$url = "https://error.personalitylib.com/500/?error=persotag&tag=" . $tag;
+header("Location: $url");
+exit;
+}
+
+mysqli_close($conn);
+}else{
+$url = "..";
+header("Location: $url");
+exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -97,15 +111,16 @@
                 Home
             </button>
             <div class="btn-group" role="group" aria-label="Basic outlined example">
+                <?php $auth = "../auth"; $profile = "../profile"; $personality = "../profile/new/submit.php"; $new = "../profile/new";?>
                 <button type="button" class="btn btn-outline-primary"
-                    onclick="window.location.href='../auth/?back=personality'">
-                    LogIn
+                    onclick="window.location.href='<?php if($logged == true){echo $profile;}else{echo $auth;}?>'">
+                    <?php if($logged == true){echo "Profile";}else{echo "LogIn";}?>
                 </button>
-                <button type="button" class="btn btn-outline-primary create" data-bs-toggle="modal"
-                    data-bs-target="#betaModal">
-                    Create
+                <button type="button" class="btn btn-outline-primary"
+                    onclick="window.location.href='<?php if($logged == true){echo $personality;}else{echo $new;}?>'">
+                    <?php if($logged == true){echo "Personality";}else{echo "Create";}?>
                 </button>
-                <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../about/'">
+                <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../about'">
                     About
                 </button>
             </div>

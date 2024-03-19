@@ -1,8 +1,6 @@
 <?php
-require_once '../../conf.php';
-
-if (isset($_GET['id'])) {
-    $user_id = $_GET["id"]; 
+    session_start();
+    require_once '../../conf.php';
 
     // Create connection
     $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
@@ -13,30 +11,57 @@ if (isset($_GET['id'])) {
         header("Location: $url");
         exit;
     }
-    
-    // Define the SQL query
-    $sql = "SELECT * FROM userlogin WHERE userid = '$user_id' LIMIT 1";
-    $result = mysqli_query($conn, $sql);
 
-    // Check if any rows are returned (meaning the tag exists)
-    if (mysqli_num_rows($result) > 0) {
-        $_SESSION['user_id'] = $user_id;
-        while($row = $result->fetch_assoc()) {
-            $email = $row["email"];
-            }
-    } else {
+    if (!isset($_SESSION['user_id'], $_SESSION['password_hash'], $_SESSION['email'], $_SESSION['name'])) {
         $url = "..";
         header("Location: $url");
         exit;
+    } else {
+        if (isset($_POST["data"])) {
+            if (!isset($_POST['username'], $_POST['phone'], $_POST['picture'])) {
+                $url = ".";
+                header("Location: $url");
+                exit;
+            } else {
+                $user_id = $_SESSION['user_id'];
+                $password_hash = $_SESSION['password_hash'];
+                $email = $_SESSION['email']; 
+                $name = $_SESSION['name'];
+
+                $username = $_POST['username'];
+                $phone = $_POST['phone'];
+                $picture = $_POST['picture']; //TODO: Add Profile Picture
+
+                $sql = "SELECT * FROM `userdata` WHERE username = '$username'";
+                $result = $conn->query($sql);
+                if (!mysqli_num_rows($result) > 0) {
+                    //Finish with SQL
+                    $sql = "INSERT INTO `userlogin`(`userid`, `email`, `password_hash`) VALUES ('$user_id','$email','$password_hash')";
+                    if ($conn->query($sql) === TRUE) {
+                        $sql = "INSERT INTO `userdata`(`user_id`, `name`, `username`, `phone`) VALUES ('$user_id','$name','$username','$phone')";
+                        if ($conn->query($sql) === TRUE) {
+                            $conn->close();
+                            $url = "..";
+                            header("Location: $url");
+                            exit;
+                        } else {
+                            $url = "https://error.personalitylib.com/500/?error=sql";
+                            header("Location: $url");
+                            exit;
+                        }
+                    } else {
+                        $url = "https://error.personalitylib.com/500/?error=sql";
+                        header("Location: $url");
+                        exit;
+                    }
+                } else {
+                    $url = "?error=1";
+                    header("Location: $url");
+                    exit;
+                }
+            }
+        } 
     }
-    mysqli_close($conn);
-    
-    
-} else {
-    $url = "..";
-    header("Location: $url");
-    exit;
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,9 +82,9 @@ if (isset($_GET['id'])) {
     <script src="../../public/bootstrap/bootstrap.bundle.js"></script>
     <!-- FAVICON -->
     <link rel="shortcut icon" href="../../public/favicon.ico" type="image/x-icon">
-    <title>Email Verify</title>
-    <meta name='title' content='Email Verify' />
-    <link rel="stylesheet" href="../../public/css/email.css" />
+    <title>Data</title>
+    <meta name='title' content='Data' />
+    <link rel="stylesheet" href="../../public/css/data.css" />
     <!--Google Ads-->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4168649657374641"
         crossorigin="anonymous"></script>
@@ -70,55 +95,64 @@ if (isset($_GET['id'])) {
         <h1 class="titel p-2"><a href="https://personalitylib.com/">PersonalityLib</a></h1>
     </header>
     <main class="row g-0">
-        <div class="wrapper">
-            <div class="card mb-3">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="../../public/img/verified-email.png" class="img-fluid rounded-start"
-                            alt="Profile Picture">
-
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Auto Email Verification</h5>
-                            <br>
-                            <p class="card-text">
-                                <?php
-                                $api_key = EMAIL_API;
-
-                                $ch = curl_init();
-
-                                curl_setopt_array($ch, [
-                                    CURLOPT_URL => "https://api.emailable.com/v1/verify?email=$email&api_key=$api_key",
-                                    CURLOPT_RETURNTRANSFER => true,
-                                    CURLOPT_FOLLOWLOCATION => true
-                                ]);
-
-                                $response = curl_exec($ch);
-
-                                curl_close($ch);
-
-                                $data = json_decode($response, true);
-
-                                if ($data['state'] === "undeliverable") {
-                                    echo "Undeliverable";
-                                } elseif ($data["disposable"] === true) {
-                                    echo "Disposable";
-                                } else {
-                                    echo "email address is valid";
-                                }
-                            ?>
-                            </p>
-                            <div class="alert alert-warning" role="alert">
-                                The Signup Engin isn't ready yet!
-                            </div>
-                            <p class="card-text"><small class="text-body-secondary"><a href="../..">Go back</a></small>
-                            </p>
+        <div class="card row g-3">
+            <?php if (isset($_GET["error"])) {?> <div class="alert alert-danger error" role="alert">
+                <?php if ($_GET["error"] == 1) {
+                    echo "There is already an account associated with this Username!";
+                } else {
+                    echo "There was an error with this form! ";
+                }
+            ?>
+            </div>
+            <?php } ?>
+            <div class="card-body">
+                <h5 class="card-title">One last Step</h5>
+                <br>
+                <form class="needs-validation" action="." method="post" novalidate>
+                    <div class="col-md-12 input-group">
+                        <span class="input-group-text" id="addon-wrapping">@</span>
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Username"
+                            aria-label="Username" aria-describedby="addon-wrapping" required>
+                        <div class="valid-feedback">
+                            Looks good!
                         </div>
                     </div>
-                </div>
+                    <br>
+                    <div class="col-md-12 input-group">
+                        <span class="input-group-text" id="addon-wrapping">#</span>
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone"
+                            aria-label="Phone" aria-describedby="addon-wrapping" required>
+                        <div class="valid-feedback">
+                            Nice!
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-md-12 input-group">
+                        <span class="input-group-text" id="addon-wrapping">Profile Picture</span>
+                        <input type="file" class="form-control" name="picture" id="picture" placeholder="Picture"
+                            aria-label="Picture" aria-describedby="addon-wrapping">
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <label class="form-check-label" for="invalidCheck">
+                                Agree to terms and conditions
+                            </label>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-12">
+                        <button name="data" class="btn btn-primary" type="submit">Submit form</button>
+                    </div>
+                </form>
             </div>
         </div>
+        <script src="../../public/js/form.js"></script>
     </main>
 </body>
 

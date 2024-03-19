@@ -1,93 +1,96 @@
 <?php
-require_once '../../conf.php';
-
 session_start();
-if (isset($_GET['id']) or isset($_SESSION['user_id'])) { 
-
-    if (isset($_GET['id'])) {
-        $user_id = $_GET["id"]; 
-        $_SESSION['user_id'] = $user_id;
-    } else if (isset($_SESSION['user_id'])) {
-        $user_id = $_SESSION['user_id']; 
-    }
-    
-    $tag = rand(100000,999999);
-    $ready = false;   
-
-    // Create connection
-    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-
-    // Check connection
-    if (!$conn) {
-        $url = "https://error.personalitylib.com/500/?error=sql";
+if (isset($_SESSION['user_id'])) {
+    $logged = true;
+    $user_id = $_SESSION['user_id'];
+} else {
+    if (isset($_COOKIE['email'], $_COOKIE['password'])) {
+        $url = "../../auth/?back=new/submit.php";
+        header("Location: $url");
+        exit;
+    } else {
+        $url = "../../auth";
         header("Location: $url");
         exit;
     }
+}
 
-    // Prüfen, ob der Tag bereits existiert
-    $sql = "SELECT * FROM `tagdata` WHERE user_id = '$user_id'";
-    $result = $conn->query($sql);
-    if (!mysqli_num_rows($result) > 0) {
-        // Construct the SQL statement with actual values
-        $sql = "INSERT INTO `tagdata` (`tag`, `user_id`) VALUES ('$tag', '$user_id')";
+require_once '../../conf.php';
 
-    if ($conn->query($sql) === TRUE) {
-        $required_fields = ['song', 'language', 'word', 'inoutside', 'pronauns', 'sexuality', 'religion', 'color', 'mentality', 'music', 'mental_health', 'physical_health', 'like_people', 'meat_people', 'friends', 'empathy', 'clean', 'bio'];
+
     
-        foreach ($required_fields as $field) {
-            if (!isset($_POST[$field])) {
-                $url = "https://error.personalitylib.com/500/?msg=1";
-                header("Location: $url");
-                exit;
-            }
-        }
+$tag = rand(100000,999999);
+$ready = false;   
 
-        $song = $_POST['song'];
-        $language = $_POST['language'];
-        $word = $_POST['word'];
-        $inoutside = $_POST['inoutside'];
-        $pronauns = $_POST['pronauns'];
-        $sexuality = $_POST['sexuality'];
-        $religion = $_POST['religion'];
-        $color = $_POST['color'];
-        $mentality = $_POST['mentality'];
-        $music = $_POST['music'];
-        $mental_health = $_POST['mental_health'];
-        $physical_health = $_POST['physical_health'];
-        $like_people = $_POST['like_people'];
-        $meat_people = $_POST['meat_people'];
-        $friends = $_POST['friends'];
-        $empathy = $_POST['empathy'];
-        $clean = $_POST['clean'];
-        $bio = $_POST['bio'];
-        
-        $sql = "INSERT INTO `persodata`(`tag`, `mental_health`, `physical_health`, `hobbys`, `music`, `like_people`,
-        `meat_people`, `friends`, `in/outside`, `empathy`, `relegion`, `mentality`, `clean`, `own_word`, `bio`, `song`, `sex`,
-        `pronauns`, `language`, `favourite_color`) VALUES
-        ('$tag','$mental_health','$physical_health','TODO','$music','$like_people','$meat_people','$friends','$inoutside','$empathy','$religion','$mentality','$clean','$word','$bio','$song','$sexuality','$pronauns','$language','$color')";
+// Create connection
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
-        if ($conn->query($sql) === TRUE) {
-            $conn->close();
-        } else {
-            $url = "https://error.personalitylib.com/500/?error=sql";
+// Check connection
+if (!$conn) {
+    $url = "https://error.personalitylib.com/500/?error=sql";
+    header("Location: $url");
+    exit;
+}
+
+// Prüfen, ob der Tag bereits existiert
+$sql = "SELECT * FROM `tagdata` WHERE user_id = '$user_id'";
+$result = $conn->query($sql);
+if (!mysqli_num_rows($result) > 0) {
+    // Construct the SQL statement with actual values
+    $sql = "INSERT INTO `tagdata` (`tag`, `user_id`) VALUES ('$tag', '$user_id')";
+
+if ($conn->query($sql) === TRUE) {
+    $required_fields = ['song', 'language', 'word', 'inoutside', 'pronauns', 'sexuality', 'religion', 'color', 'mentality', 'music', 'mental_health', 'physical_health', 'like_people', 'meat_people', 'friends', 'empathy', 'clean', 'bio'];
+
+    foreach ($required_fields as $field) {
+        if (!isset($_POST[$field])) {
+            $url = "https://error.personalitylib.com/500/?msg=1";
             header("Location: $url");
             exit;
         }
+    }
+
+    $song = $_POST['song'];
+    $language = $_POST['language'];
+    $word = $_POST['word'];
+    $inoutside = $_POST['inoutside'];
+    $pronauns = $_POST['pronauns'];
+    $sexuality = $_POST['sexuality'];
+    $religion = $_POST['religion'];
+    $color = $_POST['color'];
+    $mentality = $_POST['mentality'];
+    $music = $_POST['music'];
+    $mental_health = $_POST['mental_health'];
+    $physical_health = $_POST['physical_health'];
+    $like_people = $_POST['like_people'];
+    $meat_people = $_POST['meat_people'];
+    $friends = $_POST['friends'];
+    $empathy = $_POST['empathy'];
+    $clean = $_POST['clean'];
+    $bio = $_POST['bio'];
+    
+    $sql = "INSERT INTO `persodata`(`tag`, `mental_health`, `physical_health`, `hobbys`, `music`, `like_people`,
+    `meat_people`, `friends`, `in/outside`, `empathy`, `relegion`, `mentality`, `clean`, `own_word`, `bio`, `song`, `sex`,
+    `pronauns`, `language`, `favourite_color`) VALUES
+    ('$tag','$mental_health','$physical_health','TODO','$music','$like_people','$meat_people','$friends','$inoutside','$empathy','$religion','$mentality','$clean','$word','$bio','$song','$sexuality','$pronauns','$language','$color')";
+
+    if ($conn->query($sql) === TRUE) {
+        $conn->close();
     } else {
         $url = "https://error.personalitylib.com/500/?error=sql";
         header("Location: $url");
         exit;
     }
-    } else {
-        while($row = $result->fetch_assoc()) {
-        $tag = $row['tag'];
-    }
-        $ready = true;
-    }
-
 } else {
-    header("Location: ../../auth/?back=submit");
+    $url = "https://error.personalitylib.com/500/?error=sql";
+    header("Location: $url");
     exit;
+}
+} else {
+    while($row = $result->fetch_assoc()) {
+    $tag = $row['tag'];
+}
+    $ready = true;
 }
 ?>
 <!DOCTYPE html>

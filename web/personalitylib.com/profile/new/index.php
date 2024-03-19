@@ -1,54 +1,52 @@
 <?php
     session_start();
+    if (isset($_SESSION['user_id'])) {
+        $logged = true;
+        $user_id = $_SESSION['user_id'];
+    } else {
+        if (isset($_COOKIE['email'], $_COOKIE['password'])) {
+            $url = "../../auth/?back=profile/new";
+            header("Location: $url");
+            exit;
+        } else {
+            $url = "../../auth";
+            header("Location: $url");
+            exit;
+        }
+    }
+    
     require_once '../../conf.php';
     
-    if (isset($_GET['id']) or isset($_SESSION['user_id'])) {
-        if (isset($_GET['id'])) {
-            $user_id = $_GET["id"]; 
-        } else if ( isset($_SESSION['user_id'])) {
-            $user_id = $_SESSION['user_id']; 
-            unset($_SESSION['user_id']);
-            $url = "?id=$user_id";
-            header("Location: $url");
-            exit;
-        }
-        // Create connection
-        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+    
+    // Create connection
+    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
-        // Check connection
-        if (!$conn) {
-            $url = "https://error.personalitylib.com/500/?error=sql";
-            header("Location: $url");
-            exit;
-        }
-        
-        // Define the SQL query
-        $sql = "SELECT * FROM userdata WHERE user_id = '$user_id' LIMIT 1";
-
-        $result = mysqli_query($conn, $sql);
-
-        // Check if any rows are returned (meaning the tag exists)
-        if (mysqli_num_rows($result) > 0) {
-            $_SESSION['user_id'] = $user_id;
-            while($row = $result->fetch_assoc()) {
-                $name = $row["name"];
-                $username = $row["username"];
-                $join = $row["data_join"];
-                $birth = $row["birthdate"];
-                }
-        } else {
-            $url = "../../auth/?back=new";
-            header("Location: $url");
-            exit;
-        }
-
-        mysqli_close($conn);
-    }else{
-        //TODO: or check if allready signed in
-        $url = "../../auth/?back=new";
+    // Check connection
+    if (!$conn) {
+        $url = "https://error.personalitylib.com/500/?error=sql";
         header("Location: $url");
         exit;
     }
+    
+    // Define the SQL query
+    $sql = "SELECT * FROM userdata WHERE user_id = '$user_id' LIMIT 1";
+
+    $result = mysqli_query($conn, $sql);
+
+    // Check if any rows are returned (meaning the tag exists)
+    if (mysqli_num_rows($result) > 0) {
+        while($row = $result->fetch_assoc()) {
+            $name = $row["name"];
+            $username = $row["username"];
+            $join = $row["data_join"];
+            }
+    } else {
+        $url = "../../auth";
+        header("Location: $url");
+        exit;
+    }
+
+    mysqli_close($conn);
     
 ?>
 <!DOCTYPE html>
@@ -95,15 +93,16 @@
                 Home
             </button>
             <div class="btn-group" role="group" aria-label="Basic outlined example">
+                <?php $auth = "../../auth"; $profile = "../../profile"; $personality = "../../profile/new/submit.php"; $new = "../../profile/new";?>
                 <button type="button" class="btn btn-outline-primary"
-                    onclick="window.location.href='../../auth/?back=new'">
-                    LogIn
+                    onclick="window.location.href='<?php if($logged == true){echo $profile;}else{echo $auth;}?>'">
+                    <?php if($logged == true){echo "Profile";}else{echo "LogIn";}?>
                 </button>
-                <button type="button" class="btn btn-outline-primary create" data-bs-toggle="modal"
-                    data-bs-target="#betaModal">
-                    Create
+                <button type="button" class="btn btn-outline-primary"
+                    onclick="window.location.href='<?php if($logged == true){echo $personality;}else{echo $new;}?>'">
+                    <?php if($logged == true){echo "Personality";}else{echo "Create";}?>
                 </button>
-                <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../../about/'">
+                <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../../about'">
                     About
                 </button>
             </div>

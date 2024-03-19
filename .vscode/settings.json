@@ -40,7 +40,15 @@
         "web\\personalitylib.com\\public\\css\\auth.css.map": true,
         "Assets": true,
         "web\\personalitylib.com\\public\\css\\new.css": true,
-        "web\\personalitylib.com\\public\\css\\new.css.map": true
+        "web\\personalitylib.com\\public\\css\\new.css.map": true,
+        "web\\personalitylib.com\\public\\css\\email.css": true,
+        "web\\personalitylib.com\\public\\css\\email.css.map": true,
+        "web\\personalitylib.com\\public\\css\\profile.css": true,
+        "web\\personalitylib.com\\public\\css\\profile.css.map": true,
+        "web\\personalitylib.com\\public\\css\\submit.css": true,
+        "web\\personalitylib.com\\public\\css\\submit.css.map": true,
+        "web\\personalitylib.com\\public\\css\\data.css.map": true,
+        "web\\personalitylib.com\\public\\css\\data.css": true
     },
     "liveServer.settings.port": 5502,
 "docwriter.style": "Auto-detect",

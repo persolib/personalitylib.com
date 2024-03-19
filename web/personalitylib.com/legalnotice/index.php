@@ -1,3 +1,18 @@
+<?php
+session_start();
+if (isset($_SESSION['user_id'])) {
+    $logged = true;
+    $user_id = $_SESSION['user_id'];
+} else {
+    if (isset($_COOKIE['email'], $_COOKIE['password'])) {
+        $url = "../auth?back=legalnotice";
+        header("Location: $url");
+        exit;
+    } else {
+        $logged = false;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,15 +56,16 @@
                 Home
             </button>
             <div class="btn-group" role="group" aria-label="Basic outlined example">
+                <?php $auth = "../auth"; $profile = "../profile"; $personality = "../profile/new/submit.php"; $new = "../profile/new";?>
                 <button type="button" class="btn btn-outline-primary"
-                    onclick="window.location.href='../auth/?back=legalnotice'">
-                    LogIn
+                    onclick="window.location.href='<?php if($logged == true){echo $profile;}else{echo $auth;}?>'">
+                    <?php if($logged == true){echo "Profile";}else{echo "LogIn";}?>
                 </button>
-                <button type="button" class="btn btn-outline-primary create" data-bs-toggle="modal"
-                    data-bs-target="#betaModal">
-                    Create
+                <button type="button" class="btn btn-outline-primary"
+                    onclick="window.location.href='<?php if($logged == true){echo $personality;}else{echo $new;}?>'">
+                    <?php if($logged == true){echo "Personality";}else{echo "Create";}?>
                 </button>
-                <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../about/'">
+                <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../about'">
                     About
                 </button>
             </div>
