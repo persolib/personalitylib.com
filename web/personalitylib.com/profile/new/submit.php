@@ -17,7 +17,6 @@ if (isset($_SESSION['user_id'])) {
 
 require_once '../../conf.php';
 
-
     
 $tag = rand(100000,999999);
 $ready = false;   
@@ -32,6 +31,16 @@ if (!$conn) {
     exit;
 }
 
+$required_fields = ['song', 'language', 'word', 'inoutside', 'pronauns', 'sexuality', 'religion', 'color', 'mentality', 'music', 'mental_health', 'physical_health', 'like_people', 'meat_people', 'friends', 'empathy', 'clean', 'bio'];
+
+foreach ($required_fields as $field) {
+    if (!isset($_POST[$field])) {
+        $url = ".";
+        header("Location: $url");
+        exit;
+    }
+}
+
 // Prüfen, ob der Tag bereits existiert
 $sql = "SELECT * FROM `tagdata` WHERE user_id = '$user_id'";
 $result = $conn->query($sql);
@@ -40,15 +49,6 @@ if (!mysqli_num_rows($result) > 0) {
     $sql = "INSERT INTO `tagdata` (`tag`, `user_id`) VALUES ('$tag', '$user_id')";
 
 if ($conn->query($sql) === TRUE) {
-    $required_fields = ['song', 'language', 'word', 'inoutside', 'pronauns', 'sexuality', 'religion', 'color', 'mentality', 'music', 'mental_health', 'physical_health', 'like_people', 'meat_people', 'friends', 'empathy', 'clean', 'bio'];
-
-    foreach ($required_fields as $field) {
-        if (!isset($_POST[$field])) {
-            $url = "https://error.personalitylib.com/500/?msg=1";
-            header("Location: $url");
-            exit;
-        }
-    }
 
     $song = $_POST['song'];
     $language = $_POST['language'];
