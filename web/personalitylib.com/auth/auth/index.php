@@ -190,6 +190,10 @@
     <title>Auth</title>
     <meta name="title" content="Auth" />
     <link rel="stylesheet" href="../../public/css/auth.css" />
+    <!--Cookies-->
+    <script
+        src="https://cloud.ccm19.de/app.js?apiKey=48e8ec3f458ee0e3f9c85ab9e5753ed1313c04578c8b397d&amp;domain=65fb450aaaca388c810eafb2"
+        referrerpolicy="origin"></script>
     <!--Google Ads-->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4168649657374641"
         crossorigin="anonymous"></script>
