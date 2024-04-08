@@ -35,7 +35,7 @@
 
         // Check if any rows are returned (meaning the tag exists)
         if (mysqli_num_rows($result) > 0) {
-            $url = "personality/?tag=" . $tag;
+            $url = "personality/" . $tag;
             header("Location: $url");
             exit;
         } else {

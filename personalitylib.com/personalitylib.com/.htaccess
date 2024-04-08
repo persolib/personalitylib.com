@@ -1,3 +1,5 @@
+RewriteEngine Off
+
 ErrorDocument 404 https://error.personalitylib.com/404/
 ErrorDocument 500 https://error.personalitylib.com/500/
 ErrorDocument 401 https://error.personalitylib.com/401/

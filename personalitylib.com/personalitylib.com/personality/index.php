@@ -15,56 +15,69 @@ if (isset($_SESSION['user_id'])) {
 
 require_once '../conf.php';
 
-if (isset($_GET['tag'])) {
-// Create connection
-$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+$url = $_SERVER['REQUEST_URI'];
+// Prüfen auf das Vorhandensein eines "/"
+$lastChar = substr($url, -1);
 
-// Check connection
-if (!$conn) {
-$url = "https://error.personalitylib.com/500/?error=sql";
-header("Location: $url");
-exit;
+// Zurücknavigieren im Verzeichnis
+if ($lastChar === '/') {
+  header('HTTP/1.1 301 Moved Permanently');
+  header('Location: ' . substr($url, 0, -1));
+  exit;
 }
 
-$tag = $_GET["tag"];
+$path = parse_url($url, PHP_URL_PATH);
+$segments = explode('personality', $path);
+$segments = array_filter($segments);
+$path = end($segments);
+$tag = intval(str_replace('/', '', $path));
 
-// Define the SQL query
-$sql = "SELECT * FROM tagdata WHERE tag = '$tag' LIMIT 1";
+if (!$tag == '') {
+    // Create connection
+    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
-$result = mysqli_query($conn, $sql);
+    // Check connection
+    if (!$conn) {
+    $url = "https://error.personalitylib.com/500/?error=sql";
+    header("Location: $url");
+    exit;
+    }
 
-// Check if any rows are returned (meaning the tag exists)
-if (mysqli_num_rows($result) > 0) {
-while($row = $result->fetch_assoc()) {
-$userid = $row["user_id"];
-}
-$sql = "SELECT * FROM userdata WHERE user_id = '$userid' LIMIT 1";
-$result = mysqli_query($conn, $sql);
-if (mysqli_num_rows($result) > 0) {
-session_start();
-$_SESSION['user_id'] = $userid;
-while($row = $result->fetch_assoc()) {
-$name = $row["name"];
-$username = $row["username"];
-$join = $row["data_join"];
-$birth = $row["birthdate"];
-}
-} else {
-$url = "https://error.personalitylib.com/500/?error=userid&id=" . $userid;
-header("Location: $url");
-exit;
-}
-} else {
-$url = "https://error.personalitylib.com/500/?error=persotag&tag=" . $tag;
-header("Location: $url");
-exit;
-}
+    // Define the SQL query
+    $sql = "SELECT * FROM tagdata WHERE tag = '$tag' LIMIT 1";
 
-mysqli_close($conn);
+    $result = mysqli_query($conn, $sql);
+
+    // Check if any rows are returned (meaning the tag exists)
+    if (mysqli_num_rows($result) > 0) {
+        while($row = $result->fetch_assoc()) {
+        $userid = $row["user_id"];
+    }
+    $sql = "SELECT * FROM userdata WHERE user_id = '$userid' LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        $_SESSION['user_id'] = $userid;
+        while($row = $result->fetch_assoc()) {
+            $name = $row["name"];
+            $username = $row["username"];
+            $join = $row["data_join"];
+        }
+    } else {
+        $url = "https://error.personalitylib.com/500/?error=userid&id=" . $userid;
+        header("Location: $url");
+        exit;
+    }
+    } else {
+        $url = "https://error.personalitylib.com/500/?error=persotag&tag=" . $tag;
+        header("Location: $url");
+        exit;   
+    }
+
+    mysqli_close($conn);
 }else{
-$url = "..";
-header("Location: $url");
-exit;
+    $url = "..";
+    header("Location: $url");
+    exit;
 }
 
 ?>
