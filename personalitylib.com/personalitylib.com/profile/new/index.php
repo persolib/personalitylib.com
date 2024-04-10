@@ -1,8 +1,23 @@
 <?php
+    require_once '../../conf.php';
+    // Create connection
+    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+
     session_start();
     if (isset($_SESSION['user_id'])) {
         $logged = true;
         $user_id = $_SESSION['user_id'];
+        
+        $sql = "SELECT * FROM `tagdata` WHERE user_id = '$user_id'";
+        $result = $conn->query($sql);
+        if (mysqli_num_rows($result) > 0) {
+            while($row = $result->fetch_assoc()) {
+                $tag = $row['tag'];
+            }
+            $ready = true;
+            header("location: ../../personality/".$tag);
+            exit();
+        }
     } else {
         if (isset($_COOKIE['email'], $_COOKIE['password'])) {
             $url = "../../auth/?back=profile/new";

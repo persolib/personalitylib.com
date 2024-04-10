@@ -191,7 +191,7 @@ if ($conn->query($sql) === TRUE) {
                             </div>
                             <p class="card-text"><small class="text-body-secondary">Your page URL:
                                     <strong><a
-                                            href="../../personality/?tag=<?php echo $tag;?>">https://personalitylib.com/personality/?tag=<?php echo $tag;?></a></strong></small>
+                                            href="../../personality/?tag=<?php echo $tag;?>">https://personalitylib.com/personality/<?php echo $tag;?></a></strong></small>
                             </p>
                         </div>
                     </div>
