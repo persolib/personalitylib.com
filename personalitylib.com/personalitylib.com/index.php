@@ -100,22 +100,22 @@
             <span class="badge p-2 text-bg-light">BETA</span>
         </h1>
         <div class="link-tree p-2 ms-auto">
-            <button type="button" class="btn btn-outline-primary active home"
-                onclick="window.location.href='https://personalitylib.com/'">
+            <button type="button" class="btn btn-outline-primary active home" onclick="window.location.href='.'">
                 Home
             </button>
             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <?php $auth = "./auth"; $profile = "./profile"; $personality = "./profile/new/submit.php"; $new = "./profile/new";?>
+                <?php $auth = "./auth"; $profile = "./profile"; $logout = "./auth/logout"; $about = "./about"; $personality = "./profile/new";?>
                 <button type="button" class="btn btn-outline-primary"
                     onclick="window.location.href='<?php if($logged == true){echo $profile;}else{echo $auth;}?>'">
                     <?php if($logged == true){echo "Profile";}else{echo "LogIn";}?>
                 </button>
                 <button type="button" class="btn btn-outline-primary"
-                    onclick="window.location.href='<?php if($logged == true){echo $personality;}else{echo $new;}?>'">
+                    onclick="window.location.href='<?php echo $personality;?>'">
                     <?php if($logged == true){echo "Personality";}else{echo "Create";}?>
                 </button>
-                <button type="button" class="btn btn-outline-primary" onclick="window.location.href='./about'">
-                    About
+                <button type="button" class="btn btn-outline-primary"
+                    onclick="window.location.href='<?php if($logged == true){echo $logout;}else{echo $about;}?>'">
+                    <?php if($logged == true){echo "Logout";}else{echo "About";}?>
                 </button>
             </div>
         </div>
@@ -133,7 +133,7 @@
                     <div class="submit-div">
                         <div class="button-submit-div">
                             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                <input type="submit" value="Send" class="input-button btn btn-outline-primary"
+                                <input type="submit" value="Search" class="input-button btn btn-outline-primary"
                                     style="border-top-right-radius:0; border-bottom-right-radius:0"></input>
                                 <button type="button" class="input-button btn btn-outline-primary"
                                     data-bs-toggle="modal" data-bs-target="#Help"

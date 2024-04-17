@@ -24,7 +24,7 @@
             header("Location: $url");
             exit;
         } else {
-            $url = "../../auth";
+            $url = "../../auth/?back=profile/new";
             header("Location: $url");
             exit;
         }
@@ -107,22 +107,22 @@
         </nav>
 
         <div class="link-tree p-2 ms-auto">
-            <button type="button" class="btn btn-outline-primary home"
-                onclick="window.location.href='https://personalitylib.com/'">
+            <button type="button" class="btn btn-outline-primary home" onclick="window.location.href='../..'">
                 Home
             </button>
             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <?php $auth = "../../auth"; $profile = "../../profile"; $personality = "../../profile/new/submit.php"; $new = "../../profile/new";?>
+                <?php $auth = "../../auth"; $profile = "../../profile"; $logout = "../../auth/logout"; $about = "../../about"; $personality = "../../profile/new";?>
                 <button type="button" class="btn btn-outline-primary"
                     onclick="window.location.href='<?php if($logged == true){echo $profile;}else{echo $auth;}?>'">
                     <?php if($logged == true){echo "Profile";}else{echo "LogIn";}?>
                 </button>
                 <button type="button" class="btn btn-outline-primary"
-                    onclick="window.location.href='<?php if($logged == true){echo $personality;}else{echo $new;}?>'">
+                    onclick="window.location.href='<?php echo $personality;?>'">
                     <?php if($logged == true){echo "Personality";}else{echo "Create";}?>
                 </button>
-                <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../../about'">
-                    About
+                <button type="button" class="btn btn-outline-primary"
+                    onclick="window.location.href='<?php if($logged == true){echo $logout;}else{echo $about;}?>'">
+                    <?php if($logged == true){echo "Logout";}else{echo "About";}?>
                 </button>
             </div>
         </div>
@@ -179,7 +179,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <label for="sexuality" class="form-label">What is your sexuality?</label>
+                    <label for="sexuality" class="form-label">What is your gender?</label>
                     <select class="form-select" name="sexuality" id="sexuality" required>
                         <option selected disabled value="">Choose...</option>
                         <option value="male">Male</option>
@@ -211,18 +211,8 @@
                 </div>
                 <div class="col-md-2">
                     <label for="color" class="form-label">Whats your favourite color?</label>
-                    <select class="form-select" name="color" id="color" required>
-                        <option selected disabled value="">Choose...</option>
-                        <option style="background-color: red;" value="red">Red</option>
-                        <option style="background-color: green;" value="green">Green</option>
-                        <option style="background-color: blue; color: white;" value="blue">Blue</option>
-                        <option style="background-color: yellow;" value="yellow">Yellow</option>
-                        <option style="background-color: black; color: white;" value="black">Black</option>
-                        <option style="background-color: white;" value="white">White</option>
-                        <option style="background-color: orange;" value="orange">Orange</option>
-                        <option style="background-color: purple;" value="purple">Purple</option>
-                        <option style="background-color: pink;" value="pink">Pink</option>
-                    </select>
+                    <input type="color" class="form-control form-control-color" id="color"
+                        title="Choose your favourite color">
                     <div class="invalid-feedback">
                         Please select a valid option.
                     </div>
@@ -231,8 +221,8 @@
                 <br>
                 <div class="col-md-12">
                     <label for="bio" class="form-label">Write somthing about your self</label>
-                    <textarea class="form-control" minlength="120" rows="6" name="bio" id="bio"
-                        placeholder="Bio (120 Characters)" required></textarea>
+                    <textarea class="form-control" maxlength="200" rows="6" name="bio" id="bio" placeholder="Bio"
+                        required></textarea>
                     <div class="valid-feedback">
                         Awsome!
                     </div>
@@ -240,52 +230,68 @@
                 <br>
                 <div class="col-md-6">
                     <label for="mentality" class="form-label">Describe your mentality</label>
-                    <textarea class="form-control" minlength="50" rows="3" name="mentality" id="mentality"
-                        placeholder="Mentality (50 Characters)" required></textarea>
+                    <textarea class="form-control" maxlength="100" rows="3" name="mentality" id="mentality"
+                        placeholder="Mentality" required></textarea>
                     <div class="valid-feedback">
                         OK!
                     </div>
                 </div>
                 <div class="col-md-6">
                     <label for="music" class="form-label">Describe your music taste</label>
-                    <textarea class="form-control" minlength="50" rows="3" name="music" id="music"
-                        placeholder="Music (50 Characters)" required></textarea>
+                    <textarea class="form-control" maxlength="100" rows="3" name="music" id="music" placeholder="Music"
+                        required></textarea>
                     <div class="valid-feedback">
                         Wow!
                     </div>
                 </div>
                 <br>
                 <br>
-                <div class="col-md-4">
+                <div class="col-md-4 range-wrap">
                     <label for="mental_health" class="form-label">How mentally healthy are you?</label>
-                    <input type="range" class="form-range" name="mental_health" min="1" max="50" id="mental_health">
+                    <input type="range" class="form-range range" name="mental_health" min="0" max="50"
+                        id="mental_health">
+                    <br>
+                    <output class="bubble"></output>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 range-wrap">
                     <label for="physical_health" class="form-label">How physically healthy are you?</label>
-                    <input type="range" class="form-range" name="physical_health" min="1" max="50" id="physical_health">
+                    <input type="range" class="form-range range" name="physical_health" min="0" max="50"
+                        id="physical_health">
+                    <br>
+                    <output class="bubble"></output>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 range-wrap">
                     <label for="empathy" class="form-label">How empathetic are you?</label>
-                    <input type="range" class="form-range" name="empathy" min="1" max="50" id="empathy">
+                    <input type="range" class="form-range range" name="empathy" min="0" max="50" id="empathy">
+                    <br>
+                    <output class="bubble"></output>
                 </div>
                 <br>
                 <br>
-                <div class="col-md-6">
+                <div class="col-md-6 range-wrap">
                     <label for="like_people" class="form-label">How much do you like people?</label>
-                    <input type="range" class="form-range" name="like_people" min="1" max="50" id="like_people">
+                    <input type="range" class="form-range range" name="like_people" min="0" max="50" id="like_people">
+                    <br>
+                    <output class="bubble"></output>
                 </div>
-                <div class="col-md-6">
-                    <label for="clean" class="form-label">How clean are you?</label>
-                    <input type="range" class="form-range" name="clean" min="1" max="100" id="clean">
+                <div class="col-md-6 range-wrap">
+                    <label for="clean" class="form-label">How cleanly are you?</label>
+                    <input type="range" class="form-range range" name="clean" min="0" max="50" id="clean">
+                    <br>
+                    <output class="bubble"></output>
                 </div>
                 <br>
-                <div class="col-md-6">
+                <div class="col-md-6 range-wrap">
                     <label for="meat_people" class="form-label">How many people do you meet per month?</label>
-                    <input type="range" class="form-range" name="meat_people" min="1" max="50" id="meat_people">
+                    <input type="range" class="form-range range" name="meat_people" min="0" max="30" id="meat_people">
+                    <br>
+                    <output class="bubble"></output>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 range-wrap">
                     <label for="friends" class="form-label">How many friends do you have?</label>
-                    <input type="range" class="form-range" name="friends" min="1" max="100" id="friends">
+                    <input type="range" class="form-range range" name="friends" min="0" max="30" id="friends">
+                    <br>
+                    <output class="bubble"></output>
                 </div>
                 <br>
                 <br>
@@ -306,6 +312,7 @@
             </form>
         </div>
         <script src="../../public/js/form.js"></script>
+        <script src="../../public/js/range.js"></script>
     </main>
     <footer>
         <span>

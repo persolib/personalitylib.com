@@ -2,7 +2,7 @@
     if (isset($_GET['back'])) {
         $back = $_GET['back']; 
     } else {
-        $back = "..";
+        $back = "";
     }
 
     session_start();
@@ -59,7 +59,7 @@
                     setcookie("email", $email, time() + (365 * 24 * 60 * 60), "/");
                     setcookie("password", $password, time() + (365 * 24 * 60 * 60), "/");
                 }
-            	header("Location: ../..");
+            	header("Location: ../../$back");
 		        exit();
             }else{
 				$url = "?error=6";
@@ -158,7 +158,7 @@
             $_SESSION['email'] = $email; 
             $_SESSION['name'] = $name;
 
-            $url = "../data";
+            $url = "../data/?back=$back";
             header("Location: $url");
             exit;
         } else {
@@ -223,7 +223,7 @@
             <?php } ?>
             <div class="container" id="container">
                 <div class="form-container sign-up-container">
-                    <form class="needs-validation" action="." method="post" novalidate>
+                    <form class="needs-validation" action=".<?php echo '/?back=' . $back;?>" method="post" novalidate>
                         <h1>Create Account</h1>
                         <div class="social-container">
                             <a href="#" class="social"><i class="icon snapchat">
@@ -261,7 +261,7 @@
                     </form>
                 </div>
                 <div class="form-container sign-in-container">
-                    <form class="needs-validation" action="." method="post" novalidate>
+                    <form class="needs-validation" action=".<?php echo '/?back=' . $back;?>" method="post" novalidate>
                         <h1>Sign in</h1>
                         <div class="social-container">
                             <a href="#" class="social"><i class="icon snapchat">

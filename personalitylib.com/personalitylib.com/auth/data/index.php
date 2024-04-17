@@ -1,4 +1,10 @@
 <?php
+    if (isset($_GET['back'])) {
+        $back = $_GET['back']; 
+    } else {
+        $back = "";
+    }
+
     session_start();
     require_once '../../conf.php';
 
@@ -41,7 +47,13 @@
                         $sql = "INSERT INTO `userdata`(`user_id`, `name`, `username`, `phone`) VALUES ('$user_id','$name','$username','$phone')";
                         if ($conn->query($sql) === TRUE) {
                             $conn->close();
-                            $url = "..";
+                            
+                            unset($_SESSION['user_id']);
+                            unset($_SESSION['password_hash']);
+                            unset($_SESSION['email']);
+                            unset($_SESSION['name']);
+
+                            $url = "../?back=$back";
                             header("Location: $url");
                             exit;
                         } else {
@@ -112,7 +124,7 @@
             <div class="card-body">
                 <h5 class="card-title">One last Step</h5>
                 <br>
-                <form class="needs-validation" action="." method="post" novalidate>
+                <form class="needs-validation" action=".<?php echo '/?back=' . $back;?>" method="post" novalidate>
                     <div class="col-md-12 input-group">
                         <span class="input-group-text" id="addon-wrapping">@</span>
                         <input type="text" class="form-control" name="username" id="username" placeholder="Username"

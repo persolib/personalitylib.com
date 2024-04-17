@@ -56,7 +56,6 @@ if (!$tag == '') {
     $sql = "SELECT * FROM userdata WHERE user_id = '$userid' LIMIT 1";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
-        $_SESSION['user_id'] = $userid;
         while($row = $result->fetch_assoc()) {
             $name = $row["name"];
             $username = $row["username"];
@@ -123,22 +122,22 @@ if (!$tag == '') {
         </nav>
 
         <div class="link-tree p-2 ms-auto">
-            <button type="button" class="btn btn-outline-primary home"
-                onclick="window.location.href='https://personalitylib.com/'">
+            <button type="button" class="btn btn-outline-primary home" onclick="window.location.href='..'">
                 Home
             </button>
             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <?php $auth = "../auth"; $profile = "../profile"; $personality = "../profile/new/submit.php"; $new = "../profile/new";?>
+                <?php $auth = "../auth"; $profile = "../profile"; $logout = "../auth/logout"; $about = "../about"; $personality = "../profile/new";?>
                 <button type="button" class="btn btn-outline-primary"
                     onclick="window.location.href='<?php if($logged == true){echo $profile;}else{echo $auth;}?>'">
                     <?php if($logged == true){echo "Profile";}else{echo "LogIn";}?>
                 </button>
                 <button type="button" class="btn btn-outline-primary"
-                    onclick="window.location.href='<?php if($logged == true){echo $personality;}else{echo $new;}?>'">
+                    onclick="window.location.href='<?php echo $personality;?>'">
                     <?php if($logged == true){echo "Personality";}else{echo "Create";}?>
                 </button>
-                <button type="button" class="btn btn-outline-primary" onclick="window.location.href='../about'">
-                    About
+                <button type="button" class="btn btn-outline-primary"
+                    onclick="window.location.href='<?php if($logged == true){echo $logout;}else{echo $about;}?>'">
+                    <?php if($logged == true){echo "Logout";}else{echo "About";}?>
                 </button>
             </div>
         </div>
