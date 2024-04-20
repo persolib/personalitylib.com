@@ -75,6 +75,7 @@
 
     // Signup Engine
     if (isset($_POST["signup"])) {
+        $_SESSION["email_verify"] = false;
         $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
         $password = $_POST["password"];
         $email = $_POST["email"];
@@ -102,7 +103,7 @@
     
         // Function to validate name (letters only)
         function validateName($name) {
-            return preg_match('/^[a-zA-Z]+$/', $name);
+            return preg_match('/^[a-zA-Z ]+$/', $name);
         }
     
         // Retrieve form data
@@ -116,23 +117,25 @@
         
             // Validate password
             if (!validatePassword($password)) {
-            $errorCode = 2; // Password error
+                $errorCode = 2; // Password error
             }
         
             // Validate email
             if (!validateEmail($email)) {
-            $errorCode = 3; // Email error
+                $errorCode = 3; // Email error
             }
         
             // Validate name (letters only)
             if (!validateName($name)) {
-            $errorCode = 4; // Name error
+                $errorCode = 4; // Name error
             }
         
             // Handle errors
             if ($errorCode > 0) {
-            header("Location: ?error=" . $errorCode);
-            exit;
+                $_SESSION['pre_email'] = $email; 
+                $_SESSION['pre_name'] = $name;
+                header("Location: ?error=$errorCode&active=up");
+                exit;
             }
         } else {
             $url = "?error=5";
@@ -158,7 +161,7 @@
             $_SESSION['email'] = $email; 
             $_SESSION['name'] = $name;
 
-            $url = "../data/?back=$back";
+            $url = "../verify/?back=$back";
             header("Location: $url");
             exit;
         } else {
@@ -221,7 +224,8 @@
             ?>
             </div>
             <?php } ?>
-            <div class="container" id="container">
+            <div class="container <?php if (isset($_GET['active']) && $_GET['active'] === 'up') echo 'right-panel-active'; ?>"
+                id="container">
                 <div class="form-container sign-up-container">
                     <form class="needs-validation" action=".<?php echo '/?back=' . $back;?>" method="post" novalidate>
                         <h1>Create Account</h1>
@@ -253,8 +257,12 @@
                         </div>
                         <span>or use your email for registration</span>
                         <input type="text" class="form-control" minlength="4" maxlength="20" name="name" id="name"
-                            placeholder="Name" required />
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required />
+                            placeholder="Name"
+                            <?php if(isset($_SESSION['pre_name'])){$pre_name = $_SESSION['pre_name']; echo "value='$pre_name'";}?>
+                            required />
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email"
+                            <?php if(isset($_SESSION['pre_email'])){$pre_email = $_SESSION['pre_email']; echo "value='$pre_email'";}?>
+                            required />
                         <input type="password" class="form-control password" minlength="8" maxlength="30"
                             name="password" id="password" placeholder="Password" required />
                         <button type="submit" name="signup">Sign Up</button>

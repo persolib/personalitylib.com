@@ -18,13 +18,13 @@
         exit;
     }
 
-    if (!isset($_SESSION['user_id'], $_SESSION['password_hash'], $_SESSION['email'], $_SESSION['name'])) {
+    if (!isset($_SESSION['user_id'], $_SESSION['password_hash'], $_SESSION['email'], $_SESSION['name'], $_SESSION['email_verify']) or !$_SESSION['email_verify']) {
         $url = "..";
         header("Location: $url");
         exit;
     } else {
         if (isset($_POST["data"])) {
-            if (!isset($_POST['username'], $_POST['phone'], $_POST['picture'])) {
+            if (!isset($_POST['username'], $_POST['phone'])) {
                 $url = ".";
                 header("Location: $url");
                 exit;
@@ -142,12 +142,12 @@
                             Nice!
                         </div>
                     </div>
-                    <br>
+                    <!--<br>
                     <div class="col-md-12 input-group">
                         <span class="input-group-text" id="addon-wrapping">Profile Picture</span>
                         <input type="file" class="form-control" name="picture" id="picture" placeholder="Picture"
                             aria-label="Picture" aria-describedby="addon-wrapping">
-                    </div>
+                    </div>-->
                     <br>
                     <br>
                     <div class="col-3">
