@@ -8,3 +8,5 @@
 (C) google ads #marketing
 (B) comments #tools
 (A) social auth #auth
+(A) show password #Auth
+(B) profile #tools
